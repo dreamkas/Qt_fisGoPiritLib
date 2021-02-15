@@ -3,7 +3,7 @@
 char BUYER_ADDRESS[MAX_PATH];
 unsigned long BUYER_ADDRESS_LENGTH = 0;
 
-// Указатель на нужный вектор ошибок в зависимости от страны
+// я┐╜я┐╜я┐╜я┐╜я┐╜теля┐╜ я┐╜я┐╜ я┐╜ужня┐╜я┐╜ я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜ я┐╜шибя┐╜я┐╜ я┐╜ я┐╜я┐╜я┐╜я┐╜симя┐╜я┐╜я┐╜я┐╜ я┐╜я┐╜ я┐╜я┐╜раня┐╜
 
 
 const vector <FB_err>  *FB_errs = &FB_errs_RF;
@@ -32,7 +32,7 @@ PLDateTime getDateTime()
 
 /* ------------------------- Commands ----------------------------*/
 
-//Запрос сменных счетчиков и регистров
+//я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜ смея┐╜я┐╜я┐╜я┐╜ я┐╜я┐╜я┐╜я┐╜чикя┐╜я┐╜ я┐╜ регя┐╜я┐╜я┐╜ров
 int libGetCountersAndRegisters_intXd(int requestNumber, int data[], int maxElement, int type)
 {
     MData mData;
@@ -44,7 +44,7 @@ int libGetCountersAndRegisters_intXd(int requestNumber, int data[], int maxEleme
     return mData.errCode;
 }
 
-//Запрос сменных счетчиков и регистров дл  12 типа
+//я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜ смея┐╜я┐╜я┐╜я┐╜ я┐╜я┐╜я┐╜я┐╜чикя┐╜я┐╜ я┐╜ регя┐╜я┐╜я┐╜ров я┐╜я┐╜  12 типя┐╜
 int libGetCountersAndRegisters_12(int data[], int maxElement, char *str)
 {
     MData mData;
@@ -63,14 +63,14 @@ void setDebugLevel(int level)
     pirit_io.setDebugLevel(static_cast<DEBUG_LEVEL>(level));
 }
 
-// --------------------------------Команды в ФР -----------------------------------
-//Запрос флагов статуса ККТ
+// --------------------------------я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜ я┐╜ я┐╜я┐╜ -----------------------------------
+//я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜ флая┐╜я┐╜я┐╜ я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜ я┐╜я┐╜я┐╜
 MData libGetStatusFlags()
 {
     return pirit_io.commandVoidMData(0x00);
 }
 
-//Запрос флагов статуса ККТ
+//я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜ флая┐╜я┐╜я┐╜ я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜ я┐╜я┐╜я┐╜
 int getStatusFlags(int *fatalStatus, int *currentFlagsStatus, int *documentStatus)
 {
     MData mData;
@@ -82,13 +82,13 @@ int getStatusFlags(int *fatalStatus, int *currentFlagsStatus, int *documentStatu
     return mData.errCode;
 }
 
-//Запрос сменных счетчиков и регистров
+//я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜ смея┐╜я┐╜я┐╜я┐╜ я┐╜я┐╜я┐╜я┐╜чикя┐╜я┐╜ я┐╜ регя┐╜я┐╜я┐╜ров
 MData libGetCountersAndRegisters(unsigned char numRequest)
 {
     return pirit_io.commandByte(0x01, numRequest);
 }
 
-//Запрос сменных счетчиков и регистров
+//я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜ смея┐╜я┐╜я┐╜я┐╜ я┐╜я┐╜я┐╜я┐╜чикя┐╜я┐╜ я┐╜ регя┐╜я┐╜я┐╜ров
 int getCountersAndRegisters(int requestNumber, int *data)
 {
     int dataInt16[16];
@@ -156,14 +156,14 @@ int getCountersAndRegisters(int requestNumber, int *data)
 }
 
 
-//Запрос сведений о ККТ
+//я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜ свея┐╜я┐╜я┐╜я┐╜я┐╜ я┐╜ я┐╜я┐╜я┐╜
 MData libGetKKTInfo(unsigned char numRequest)
 {
     return pirit_io.commandByte(0x02, numRequest);
 }
 
 
-//Запрос сведений о ККТ
+//я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜ свея┐╜я┐╜я┐╜я┐╜я┐╜ я┐╜ я┐╜я┐╜я┐╜
 int getKKTInfo(unsigned char numRequest, char *data)
 {
     return getKKTInfoNum(numRequest, 1, data);
@@ -213,13 +213,13 @@ int getKKTInfoNum(unsigned char numRequest, int numParam, char *data)
     return err;
 }
 
-//Запрос данных по чеку
+//я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜ я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜ я┐╜я┐╜ чекя┐╜
 MData libGetReceiptData(unsigned char numRequest)
 {
     return pirit_io.commandByte(0x03, numRequest);
 }
 
-//Запрос состо ни  печатающего устройства (ПУ)
+//я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜ я┐╜я┐╜я┐╜я┐╜я┐╜ я┐╜я┐╜  я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜щегя┐╜ я┐╜я┐╜я┐╜ройя┐╜тва (я┐╜я┐╜)
 MData libGetPrinterStatus()
 {
     return pirit_io.commandVoidMData(0x04);
@@ -240,13 +240,13 @@ int getPrinterStatus(int* result)
     return err;
 }
 
-//Запрос сервисной информации П2
+//я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜ я┐╜я┐╜рвисноя┐╜ я┐╜я┐╜я┐╜я┐╜рмации я┐╜2
 MData libGetServiceInfo(unsigned char numRequest)
 {
     return pirit_io.commandByte(0x05, numRequest);
 }
 
-//Запрос дополнительной информации о ошибках П2
+//я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜ я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜тельноя┐╜ я┐╜я┐╜я┐╜я┐╜рмации я┐╜ я┐╜шибя┐╜я┐╜я┐╜ я┐╜2
 MData libGetExErrorInfo(unsigned char numRequest)
 {
     MData mData;
@@ -280,10 +280,10 @@ MData libGetExErrorInfo(unsigned char numRequest)
 
 bool libIsErrorCritical(const int errCode, FB_OPERATION_CRITICAL_LEVEL opType, std::string& retMess)
 {
-    // Если сюда попал результат "команда выполнена без ошибок"
+    // я┐╜сли я┐╜юда я┐╜я┐╜я┐╜я┐╜я┐╜ резя┐╜я┐╜я┐╜я┐╜я┐╜я┐╜ "я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜ я┐╜ыпоя┐╜я┐╜я┐╜я┐╜я┐╜ я┐╜я┐╜я┐╜ я┐╜шибя┐╜я┐╜"
     if (errCode == FB_NOT_ERROR)
     {
-        retMess = "команда выполнена без ошибок";
+        retMess = "я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜ я┐╜ыпоя┐╜я┐╜я┐╜я┐╜я┐╜ я┐╜я┐╜я┐╜ я┐╜шибя┐╜я┐╜";
         return false;
     }
 
@@ -292,14 +292,14 @@ bool libIsErrorCritical(const int errCode, FB_OPERATION_CRITICAL_LEVEL opType, s
         printf("%s FB_errs is NULL!", __FUNCTION__);
         return false;
     }
-    // Ищем ошибку по коду
+    // я┐╜щем я┐╜шибя┐╜я┐╜ я┐╜я┐╜ я┐╜я┐╜я┐╜я┐╜
     const auto it = std::find_if(begin(*FB_errs), end(*FB_errs), [errCode](const FB_err& fb_err){return (fb_err.code == errCode);});
 
     if (it != end(*FB_errs))
     {
         FB_err my_err {*it};
         retMess = my_err.mess;
-        // тип выполненной операции > уровеня критичности ошибки, то операция выполнена (return FALSE)
+        // тип я┐╜ыпоя┐╜я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜ я┐╜я┐╜я┐╜я┐╜я┐╜ции > я┐╜ровя┐╜я┐╜я┐╜ я┐╜я┐╜я┐╜я┐╜я┐╜чноя┐╜я┐╜я┐╜ я┐╜шибя┐╜я┐╜, я┐╜я┐╜ я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜ я┐╜ыпоя┐╜я┐╜я┐╜я┐╜я┐╜ (return FALSE)
         const bool res {(static_cast<int>(opType) <= static_cast<int>(my_err.cLvl))};
 
         if (pirit_io.DEBUGLEVEL == DEBUG_ON)
@@ -314,23 +314,23 @@ bool libIsErrorCritical(const int errCode, FB_OPERATION_CRITICAL_LEVEL opType, s
         return  res;
     }
     //----------------
-    // Если такой ошибки у нас нет, то говорим что операция не выполнена
+    // я┐╜сли такя┐╜я┐╜ я┐╜шибя┐╜я┐╜ я┐╜ я┐╜я┐╜я┐╜ я┐╜я┐╜я┐╜, я┐╜я┐╜ я┐╜я┐╜я┐╜я┐╜рим я┐╜я┐╜я┐╜ я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜ я┐╜я┐╜ я┐╜ыпоя┐╜я┐╜я┐╜я┐╜я┐╜
     if (retMess.empty())
     {
-        retMess = "НЕИЗВЕСТНАЯ ОШИБКА! '" + to_string(errCode) + "'";
+        retMess = "я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜ я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜! '" + to_string(errCode) + "'";
     }
     return true;
 }
 
 
 //======================================================================================
-//Промотка бумаги П2
+//я┐╜ромя┐╜тка я┐╜умая┐╜я┐╜ я┐╜2
 int scrollPaper()
 {
     return pirit_io.scrollPaper();
 }
 
-//Начало работы
+//я┐╜я┐╜чаля┐╜ рабя┐╜я┐╜я┐╜
 int libCommandStart(PLDate mpDate, PLTime mpTime)
  {
     int err = 0;
@@ -378,7 +378,7 @@ MData libReadSettingsTable(unsigned char number, int index)
     return mData;
 }
 
-// Чтение таблицы настроек с возвратом строки
+// я┐╜теня┐╜я┐╜ табя┐╜я┐╜я┐╜я┐╜ я┐╜я┐╜я┐╜я┐╜роея┐╜ я┐╜ я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜том я┐╜я┐╜рокя┐╜
 int getStrFromSettingsTable(string &dataTable, uint8_t number, int32_t index, uint16_t numParam)
 {
     int err;
@@ -415,7 +415,7 @@ int getStrFromSettingsTable(string &dataTable, uint8_t number, int32_t index, ui
     return err;
 }
 
-// Чтение таблицы настроек с возвратом числа или битовой маски
+// я┐╜теня┐╜я┐╜ табя┐╜я┐╜я┐╜я┐╜ я┐╜я┐╜я┐╜я┐╜роея┐╜ я┐╜ я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜том я┐╜я┐╜сла я┐╜я┐╜я┐╜ я┐╜я┐╜товя┐╜я┐╜ я┐╜я┐╜ски
 int getIntFromSettingsTable(int &data, uint8_t number, int32_t index, uint16_t numParam)
 {
     int err;
@@ -448,7 +448,7 @@ int getIntFromSettingsTable(int &data, uint8_t number, int32_t index, uint16_t n
     return err;
 }
 
-// Чтение информации из ФН с возвратом строки
+// я┐╜теня┐╜я┐╜ я┐╜я┐╜я┐╜я┐╜рмации я┐╜я┐╜ я┐╜я┐╜ я┐╜ я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜том я┐╜я┐╜рокя┐╜
 int getStrFromInfoFN(uint8_t number, int32_t index, string &dataFN)
 {
     int err;
@@ -485,7 +485,7 @@ int getStrFromInfoFN(uint8_t number, int32_t index, string &dataFN)
 }
 
 //===============================================================
-// Чтение информации из ФН с возвратом числа или битовой маски
+// я┐╜теня┐╜я┐╜ я┐╜я┐╜я┐╜я┐╜рмации я┐╜я┐╜ я┐╜я┐╜ я┐╜ я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜том я┐╜я┐╜сла я┐╜я┐╜я┐╜ я┐╜я┐╜товя┐╜я┐╜ я┐╜я┐╜ски
 int getIntFromInfoFN(uint8_t number, int32_t index, int &data)
 {
     int err;
@@ -518,7 +518,7 @@ int getIntFromInfoFN(uint8_t number, int32_t index, int &data)
 }
 
 //===============================================================
-//Запись таблицы настроек
+//я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜ табя┐╜я┐╜я┐╜я┐╜ я┐╜я┐╜я┐╜я┐╜роея┐╜
 int libWriteSettingsTable(unsigned char number, int index, const char* data)
 {
     int err;
@@ -553,7 +553,7 @@ int libWriteSettingsTable(unsigned char number, int index, uint8_t data)
 
 
 //===============================================================
-//Чтение даты/времени ККТ
+//я┐╜теня┐╜я┐╜ я┐╜я┐╜я┐╜я┐╜/я┐╜ремя┐╜я┐╜я┐╜ я┐╜я┐╜я┐╜
 MData libGetPiritDateTime()
 {
     return pirit_io.commandVoidMData(0x13);
@@ -578,7 +578,7 @@ int getPiritDateTime(int* cDate, int* cTime)
 
 
 //===============================================================
-//Запись даты/времени ККТ
+//я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜ я┐╜я┐╜я┐╜я┐╜/я┐╜ремя┐╜я┐╜я┐╜ я┐╜я┐╜я┐╜
 int libSetPiritDateTime(PLDate mpDate, PLTime mpTime)
 {
     int err;
@@ -596,7 +596,7 @@ int libSetPiritDateTime(PLDate mpDate, PLTime mpTime)
 }
 
 //===============================================================
-//Загрузить логотип в ФР
+//я┐╜я┐╜я┐╜я┐╜узия┐╜я┐╜ я┐╜я┐╜я┐╜я┐╜тип я┐╜ я┐╜я┐╜
 int libLoadLogo(int size, unsigned char* data)
 {
     pirit_io.makeFirstPartPacketToSend(0x15);
@@ -607,14 +607,14 @@ int libLoadLogo(int size, unsigned char* data)
 }
 
 //===============================================================
-//Удалить логотип
+//я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜ я┐╜я┐╜я┐╜я┐╜тип
 int libDeleteLogo()
 {
     return pirit_io.commandVoid(0x16);
 }
 
 //===============================================================
-//Загрузить дизайн чека
+//я┐╜я┐╜я┐╜я┐╜узия┐╜я┐╜ я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜ чекя┐╜
 int libLoadReceiptDesign(int size, unsigned char* data)
 {
     pirit_io.makeFirstPartPacketToSend(0x17);
@@ -625,7 +625,7 @@ int libLoadReceiptDesign(int size, unsigned char* data)
 }
 
 //===============================================================
-//Загрузить графическое изображение
+//я┐╜я┐╜я┐╜я┐╜узия┐╜я┐╜ я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜скоя┐╜ я┐╜я┐╜я┐╜я┐╜ражя┐╜я┐╜я┐╜я┐╜
 int libLoadPicture(int width, int height, int sm, const char* name, int number, unsigned char* data)
 {
     pirit_io.makeFirstPartPacketToSend(0x18);
@@ -641,7 +641,7 @@ int libLoadPicture(int width, int height, int sm, const char* name, int number, 
 
 
 //===============================================================
-//Распечатать отчет без гашения  (X-отчет)
+//я┐╜я┐╜спея┐╜я┐╜я┐╜я┐╜я┐╜я┐╜ я┐╜я┐╜я┐╜я┐╜я┐╜ я┐╜я┐╜я┐╜ я┐╜я┐╜шеня┐╜я┐╜  (X-я┐╜я┐╜я┐╜я┐╜я┐╜)
 int libPrintXReport(const char* nameCashier)
 {
     int err;
@@ -657,7 +657,7 @@ int libPrintXReport(const char* nameCashier)
 }
 
 //===============================================================
-//Закрыть смену (Z-отчет)
+//я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜ смея┐╜я┐╜ (Z-я┐╜я┐╜я┐╜я┐╜я┐╜)
 int libPrintZReport(const char* nameCashier, int options)
 {
     int err;
@@ -679,7 +679,7 @@ int libPrintZReport(const char* nameCashier, int options)
 }
 
 //===============================================================
-//Закрыть смену (Z-отчет) для РБ
+//я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜ смея┐╜я┐╜ (Z-я┐╜я┐╜я┐╜я┐╜я┐╜) я┐╜я┐╜я┐╜ я┐╜я┐╜
 int libPrintZReport_By(const char* nameCashier)
 {
     int err;
@@ -699,7 +699,7 @@ int libPrintZReport_By(const char* nameCashier)
 }
 
 //===============================================================
-//Открыть смену
+//я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜ смея┐╜я┐╜
 int libOpenShift(const char* nameCashier)
 {
     int err;
@@ -715,7 +715,7 @@ int libOpenShift(const char* nameCashier)
 }
 
 
-//Открыть смену для РБ
+//я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜ смея┐╜я┐╜ я┐╜я┐╜я┐╜ я┐╜я┐╜
 int libOpenShift_By()
 {
     int err;
@@ -728,12 +728,12 @@ int libOpenShift_By()
     pirit_io.disconnectSock();
     return err;
 }
-// формирует чек коррекции с записью в ФН
+// я┐╜я┐╜рмия┐╜я┐╜я┐╜я┐╜ чек я┐╜я┐╜я┐╜рекции я┐╜ я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜ я┐╜ я┐╜я┐╜
 int libDoCheckCorrection(const char *nameCashier, double cash, double cashless, unsigned char correctionFlags)
 {
     int err;
     pirit_io.makeFirstPartPacketToSend(0x58);
-    pirit_io.addConstChar(nameCashier); //(Им  оператора)Код и/или им  оператора
+    pirit_io.addConstChar(nameCashier); //(я┐╜я┐╜  я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜)я┐╜я┐╜я┐╜ я┐╜/я┐╜я┐╜я┐╜ я┐╜я┐╜  я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜
     pirit_io.addDouble(cash);
     pirit_io.addDouble(cashless);
     pirit_io.addEmptyByte();
@@ -756,7 +756,7 @@ int libDoCheckCorrectionEx(const char *nameCashier, double cash, double cashless
 {
     int err;
     pirit_io.makeFirstPartPacketToSend(0x58);
-    pirit_io.addConstChar(nameCashier); //(Им  оператора)Код и/или им  оператора
+    pirit_io.addConstChar(nameCashier); //(я┐╜я┐╜  я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜)я┐╜я┐╜я┐╜ я┐╜/я┐╜я┐╜я┐╜ я┐╜я┐╜  я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜
     pirit_io.addDouble(cash);
     pirit_io.addDouble(cashless);
     pirit_io.addDouble(sum1);
@@ -784,12 +784,12 @@ int libDoCheckCorrectionEx(const char *nameCashier, double cash, double cashless
 }
 
 
-// Печать отчета о текущем состоянии расчетов
+// я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜ я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜ я┐╜ текя┐╜щем я┐╜я┐╜я┐╜я┐╜я┐╜яния┐╜ я┐╜я┐╜я┐╜я┐╜я┐╜тов
 int libCurrentStatusReport(char* nameCashier)
 {
     int err;
     pirit_io.makeFirstPartPacketToSend(0x59);
-    pirit_io.addConstChar(nameCashier); //(Им  оператора)Код и/или им  оператора
+    pirit_io.addConstChar(nameCashier); //(я┐╜я┐╜  я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜)я┐╜я┐╜я┐╜ я┐╜/я┐╜я┐╜я┐╜ я┐╜я┐╜  я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜
     pirit_io.makeEndPartPacket();
     err = pirit_io.connectSock(); if( err != 0 ) return err;
     err = pirit_io.sendData();
@@ -801,14 +801,14 @@ int libCurrentStatusReport(char* nameCashier)
     return err;
 }
 
-//Открыть документ
+//я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜ я┐╜я┐╜я┐╜умея┐╜я┐╜
 int libOpenDocument(unsigned char type, unsigned char numDepart, char* nameCashier, long docNumber)
 {
     int err;
     pirit_io.makeFirstPartPacketToSend(0x30);
-    pirit_io.addByte(type); //(Целое число)Режим и тип документа,
-    pirit_io.addByte(numDepart); //(Целое число 1..99)Номер отдела
-    pirit_io.addConstChar(nameCashier); //(Им  оператора)Код и/или им  оператора
+    pirit_io.addByte(type); //(я┐╜я┐╜я┐╜я┐╜я┐╜ я┐╜я┐╜сло)я┐╜я┐╜я┐╜я┐╜я┐╜ я┐╜ тип я┐╜я┐╜я┐╜умея┐╜я┐╜я┐╜,
+    pirit_io.addByte(numDepart); //(я┐╜я┐╜я┐╜я┐╜я┐╜ я┐╜я┐╜сло 1..99)я┐╜я┐╜я┐╜я┐╜я┐╜ я┐╜тдея┐╜я┐╜
+    pirit_io.addConstChar(nameCashier); //(я┐╜я┐╜  я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜)я┐╜я┐╜я┐╜ я┐╜/я┐╜я┐╜я┐╜ я┐╜я┐╜  я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜
     pirit_io.addLong(docNumber);
     pirit_io.makeEndPartPacket();
     err = pirit_io.connectSock(); if( err != 0 ) return err;
@@ -827,9 +827,9 @@ int libOpenDocumentEx(unsigned char type, unsigned char numDepart, char* nameCas
 {
     int err;
     pirit_io.makeFirstPartPacketToSend(0x30);
-    pirit_io.addByte(type); //(Целое число)Режим и тип документа,
-    pirit_io.addByte(numDepart); //(Целое число 1..99)Номер отдела
-    pirit_io.addConstChar(nameCashier); //(Им  оператора)Код и/или им  оператора
+    pirit_io.addByte(type); //(я┐╜я┐╜я┐╜я┐╜я┐╜ я┐╜я┐╜сло)я┐╜я┐╜я┐╜я┐╜я┐╜ я┐╜ тип я┐╜я┐╜я┐╜умея┐╜я┐╜я┐╜,
+    pirit_io.addByte(numDepart); //(я┐╜я┐╜я┐╜я┐╜я┐╜ я┐╜я┐╜сло 1..99)я┐╜я┐╜я┐╜я┐╜я┐╜ я┐╜тдея┐╜я┐╜
+    pirit_io.addConstChar(nameCashier); //(я┐╜я┐╜  я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜)я┐╜я┐╜я┐╜ я┐╜/я┐╜я┐╜я┐╜ я┐╜я┐╜  я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜
     pirit_io.addLong(docNumber);
     pirit_io.addByte(taxN);
     pirit_io.makeEndPartPacket();
@@ -845,7 +845,7 @@ int libOpenDocumentEx(unsigned char type, unsigned char numDepart, char* nameCas
     return err;
 }
 
-//Установить адрес покупателя
+//я┐╜я┐╜таня┐╜я┐╜я┐╜я┐╜я┐╜ я┐╜я┐╜я┐╜я┐╜я┐╜ я┐╜я┐╜я┐╜упателя┐╜
 unsigned long libSetBuyerAddress(const char *buyerAddress)
 {
     if (buyerAddress != NULL)
@@ -860,7 +860,7 @@ unsigned long libSetBuyerAddress(const char *buyerAddress)
     return BUYER_ADDRESS_LENGTH;
 }
 
-//Получить адрес покупател
+//я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜ я┐╜я┐╜я┐╜я┐╜я┐╜ я┐╜я┐╜я┐╜упател
 unsigned long libGetBuyerAddress(char *buyerAddress, unsigned long baLength)
 {
     unsigned long written = 0;
@@ -874,7 +874,7 @@ unsigned long libGetBuyerAddress(char *buyerAddress, unsigned long baLength)
 }
 
 //======================================================
-//Стереть адрес покупател
+//я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜ я┐╜я┐╜я┐╜я┐╜я┐╜ я┐╜я┐╜я┐╜упател
 void libCleanBuyerAddress()
 {
     BUYER_ADDRESS_LENGTH = 0;
@@ -887,19 +887,19 @@ CloseDocResult libCloseDocument(const CloseDocParam &closeDocParam)
     CloseDocResult result;
 
     pirit_io.makeFirstPartPacketToSend(PIRIT_CLOSE_DOCUMENT);
-    pirit_io.addByte(closeDocParam.cutPaper);                   // (Целое число) Флаг отрезки
-    pirit_io.addString(closeDocParam.buyerAddress);             // (Строка) Адрес покупателя
-    pirit_io.addLong(closeDocParam.flags);                      // (Число) Разные флаги
-    pirit_io.addString(closeDocParam.clcPlace);                 // (Строка) Место расчётов
-    pirit_io.addString(closeDocParam.recSendAddress);           // (Строка) Адрес отправителя чеков
-    pirit_io.addString(closeDocParam.automaticNumber);          // (Строка) Номер автомата
-    pirit_io.addString(closeDocParam.addUserReq.first);         // (Строка) Название дополнительного реквизита пользователя
-    pirit_io.addString(closeDocParam.addUserReq.second);        // (Строка) Значение дополнительного реквизита пользователя
-    pirit_io.addString(closeDocParam.buyerName);                // (Строка)[0..128] Покупатель
-    pirit_io.addString(closeDocParam.buyerInn);                 // (Строка)[0..12] ИНН покупателя
+    pirit_io.addByte(closeDocParam.cutPaper);                   // (я┐╜я┐╜я┐╜я┐╜я┐╜ я┐╜я┐╜сло) я┐╜я┐╜я┐╜я┐╜ я┐╜я┐╜резя┐╜я┐╜
+    pirit_io.addString(closeDocParam.buyerAddress);             // (я┐╜я┐╜рокя┐╜) я┐╜я┐╜я┐╜я┐╜я┐╜ я┐╜я┐╜я┐╜упателя┐╜
+    pirit_io.addLong(closeDocParam.flags);                      // (я┐╜я┐╜сло) я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜ флая┐╜я┐╜
+    pirit_io.addString(closeDocParam.clcPlace);                 // (я┐╜я┐╜рокя┐╜) я┐╜я┐╜я┐╜я┐╜я┐╜ я┐╜я┐╜я┐╜я┐╜я┐╜тов
+    pirit_io.addString(closeDocParam.recSendAddress);           // (я┐╜я┐╜рокя┐╜) я┐╜я┐╜я┐╜я┐╜я┐╜ я┐╜я┐╜я┐╜равя┐╜теля┐╜ чекя┐╜я┐╜
+    pirit_io.addString(closeDocParam.automaticNumber);          // (я┐╜я┐╜рокя┐╜) я┐╜я┐╜я┐╜я┐╜я┐╜ я┐╜я┐╜томя┐╜я┐╜я┐╜
+    pirit_io.addString(closeDocParam.addUserReq.first);         // (я┐╜я┐╜рокя┐╜) я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜ я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜тельноя┐╜я┐╜ рекя┐╜я┐╜я┐╜я┐╜я┐╜я┐╜ я┐╜я┐╜я┐╜ьзоя┐╜я┐╜теля┐╜
+    pirit_io.addString(closeDocParam.addUserReq.second);        // (я┐╜я┐╜рокя┐╜) я┐╜я┐╜я┐╜ченя┐╜я┐╜ я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜тельноя┐╜я┐╜ рекя┐╜я┐╜я┐╜я┐╜я┐╜я┐╜ я┐╜я┐╜я┐╜ьзоя┐╜я┐╜теля┐╜
+    pirit_io.addString(closeDocParam.buyerName);                // (я┐╜я┐╜рокя┐╜)[0..128] я┐╜я┐╜я┐╜упателя┐╜
+    pirit_io.addString(closeDocParam.buyerInn);                 // (я┐╜я┐╜рокя┐╜)[0..12] я┐╜я┐╜я┐╜ я┐╜я┐╜я┐╜упателя┐╜
 
     pirit_io.makeEndPartPacket();
-    // Открываем в непакетном
+    // я┐╜я┐╜я┐╜я┐╜ывая┐╜я┐╜ я┐╜ я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜тноя┐╜
     if (pirit_io.getPacketMode() == 0)
     {
         err = pirit_io.connectSock();
@@ -948,9 +948,9 @@ CloseDocResult libCloseDocument(const CloseDocParam &closeDocParam)
 }
 
 //======================================================
-CloseDocResult libCloseDocumentLite(unsigned        char cutPaper,    //  Флаг отрезки
-                                    string          buyerAddress,     //  Адрес покупателя
-                                    unsigned char   internetSign)     //  Установить признак расчетов в интернет
+CloseDocResult libCloseDocumentLite(unsigned        char cutPaper,    //  я┐╜я┐╜я┐╜я┐╜ я┐╜я┐╜резя┐╜я┐╜
+                                    string          buyerAddress,     //  я┐╜я┐╜я┐╜я┐╜я┐╜ я┐╜я┐╜я┐╜упателя┐╜
+                                    unsigned char   internetSign)     //  я┐╜я┐╜таня┐╜я┐╜я┐╜я┐╜я┐╜ я┐╜ризя┐╜я┐╜я┐╜ я┐╜я┐╜я┐╜я┐╜я┐╜тов я┐╜ я┐╜я┐╜я┐╜я┐╜рнея┐╜
 {
     int err = 0;
     CloseDocResult result;
@@ -963,7 +963,7 @@ CloseDocResult libCloseDocumentLite(unsigned        char cutPaper,    //  Флаг о
     }
     pirit_io.makeEndPartPacket();
 
-    // Открываем в непакетном
+    // я┐╜я┐╜я┐╜я┐╜ывая┐╜я┐╜ я┐╜ я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜тноя┐╜
     if (pirit_io.getPacketMode() == 0)
     {
         err = pirit_io.connectSock();
@@ -998,7 +998,7 @@ CloseDocResult libCloseDocumentLite(unsigned        char cutPaper,    //  Флаг о
 
 
 //======================================================
-//Закрыть документ Кайфовый By
+//я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜ я┐╜я┐╜я┐╜умея┐╜я┐╜ я┐╜я┐╜я┐╜фовя┐╜я┐╜ By
 MData libCloseDocument_By(unsigned       char cutPaper)
 {
     int err = 0;
@@ -1035,7 +1035,7 @@ MData libCloseDocument_By(unsigned       char cutPaper)
 }
 
 //======================================================
-//Аннулировать документ
+//я┐╜я┐╜я┐╜улировя┐╜я┐╜я┐╜ я┐╜я┐╜я┐╜умея┐╜я┐╜
 int libCancelDocument()
 {
     pirit_io.setPacketMode(0);
@@ -1072,7 +1072,7 @@ int libCancelDocument_By(int numDoc, string nameCashier, double (&arr)[PIRIT_PAR
     return err;
 }
 
-//Отложить документ
+//я┐╜тлоя┐╜я┐╜я┐╜я┐╜ я┐╜я┐╜я┐╜умея┐╜я┐╜
 int libPostponeDocument(const char* info)
 {
     int err;
@@ -1090,16 +1090,16 @@ int libPostponeDocument(const char* info)
     return err;
 }
 
-//Отрезать документ
+//я┐╜я┐╜резя┐╜я┐╜я┐╜ я┐╜я┐╜я┐╜умея┐╜я┐╜
 int libCutDocument()
 {
     return pirit_io.commandVoid(0x34);
 }
 
 
-//Печать текста любого с заданными аттрибутами
-int libPrintString(char           *textStr,                 // Печатаемый текст 0..72 символа
-                   FONTS               fnt)                 // аттрибуты из enum FONTS
+//я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜ текя┐╜я┐╜я┐╜ я┐╜юбоя┐╜я┐╜ я┐╜ я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜ыми я┐╜я┐╜я┐╜рибя┐╜тамя┐╜
+int libPrintString(char           *textStr,                 // я┐╜я┐╜я┐╜я┐╜таея┐╜я┐╜я┐╜ текя┐╜я┐╜ 0..72 симя┐╜я┐╜я┐╜я┐╜
+                   FONTS               fnt)                 // я┐╜я┐╜я┐╜рибя┐╜я┐╜я┐╜ я┐╜я┐╜ enum FONTS
 {
     unsigned char attribute = fnt;
     int err;
@@ -1118,7 +1118,7 @@ int libPrintString(char           *textStr,                 // Печатаемый текст 
     return err;
 }
 
-//Печать штрих-кода
+//я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜ я┐╜я┐╜я┐╜я┐╜я┐╜-я┐╜я┐╜я┐╜я┐╜
 int libPrintBarCode(unsigned char posText, unsigned char widthBarCode, unsigned char heightBarCode,
                                   unsigned char typeBarCode, const char* barCode)
 {
@@ -1149,8 +1149,8 @@ int commandAddDelPosition(int numCom, const char* goodsName, const char* barcode
 {
     int err;
     pirit_io.makeFirstPartPacketToSend(numCom);
-    pirit_io.addConstChar(goodsName); //Наименование товара 0..224
-    pirit_io.addConstChar(barcode); //Артикул или ШК 0..18
+    pirit_io.addConstChar(goodsName); //я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜ товя┐╜я┐╜я┐╜ 0..224
+    pirit_io.addConstChar(barcode); //я┐╜я┐╜тикя┐╜я┐╜ я┐╜я┐╜я┐╜ я┐╜я┐╜ 0..18
     pirit_io.addDouble(quantity);
     pirit_io.addDouble(price);
     pirit_io.addByte(taxNumber);
@@ -1182,13 +1182,13 @@ int commandAddDelPosition(int numCom, const char* goodsName, const char* barcode
 }
 
 //------------------------------
-// Добавить товарную позицию ЭТА НОРМ!
+// я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜ товя┐╜я┐╜я┐╜я┐╜я┐╜ я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜ я┐╜я┐╜я┐╜ я┐╜я┐╜я┐╜я┐╜!
 int PiritLib::libAddPosition(const Position &position)
 {
     int err;
     pirit_io.makeFirstPartPacketToSend(PIRIT_ADD_POSITION);
-    pirit_io.addString(position.goodsName, LIMIT_GOODS_NAME); //Наименование товара 0..224
-    pirit_io.addString(position.barcode, LIMIT_ARTICLE_BARCODE); //Артикул или ШК 0..18
+    pirit_io.addString(position.goodsName, LIMIT_GOODS_NAME); //я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜ товя┐╜я┐╜я┐╜ 0..224
+    pirit_io.addString(position.barcode, LIMIT_ARTICLE_BARCODE); //я┐╜я┐╜тикя┐╜я┐╜ я┐╜я┐╜я┐╜ я┐╜я┐╜ 0..18
     pirit_io.addDouble(position.quantity);
     pirit_io.addDouble(position.price);
     pirit_io.addByte(position.taxNumber);
@@ -1203,7 +1203,7 @@ int PiritLib::libAddPosition(const Position &position)
     pirit_io.addString(position.customEntryNum, LIMIT_CUSTOM_ENTRY_NUM);
     pirit_io.addDouble(position.exciseDuty);
     pirit_io.makeEndPartPacket();
-    // Открываем сокет в непакетном режиме
+    // я┐╜я┐╜я┐╜я┐╜ывая┐╜я┐╜ сокя┐╜я┐╜ я┐╜ я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜тноя┐╜ режя┐╜я┐╜я┐╜
     if (pirit_io.getPacketMode() == 0)
     {
         err = pirit_io.connectSock(); if( err != 0 ) return err;
@@ -1216,7 +1216,7 @@ int PiritLib::libAddPosition(const Position &position)
             err = pirit_io.readData();
         }
     }
-    // Закрываем сокет в непакетном режиме
+    // я┐╜я┐╜я┐╜я┐╜ывая┐╜я┐╜ сокя┐╜я┐╜ я┐╜ я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜тноя┐╜ режя┐╜я┐╜я┐╜
     if (pirit_io.getPacketMode() == 0)
     {
         pirit_io.disconnectSock();
@@ -1225,7 +1225,7 @@ int PiritLib::libAddPosition(const Position &position)
 }
 
 //----------------------------------------------
-// Выгрузить документ по номеру из КЛ
+// я┐╜я┐╜я┐╜я┐╜узия┐╜я┐╜ я┐╜я┐╜я┐╜умея┐╜я┐╜ я┐╜я┐╜ я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜ я┐╜я┐╜ я┐╜я┐╜
 //----------------------------------------------
 int libKLDocRead( long doc_num, std::vector<std::string> &strs )
 {
@@ -1284,7 +1284,7 @@ int libKLDocRead( long doc_num, std::vector<std::string> &strs )
     return err;
 }
 //----------------------------------------------
-// Распечатать документ по номеру из КЛ
+// я┐╜я┐╜спея┐╜я┐╜я┐╜я┐╜я┐╜я┐╜ я┐╜я┐╜я┐╜умея┐╜я┐╜ я┐╜я┐╜ я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜ я┐╜я┐╜ я┐╜я┐╜
 //----------------------------------------------
 int libKLDocPrint( long doc_num )
 {
@@ -1309,14 +1309,14 @@ int libKLDocPrint( long doc_num )
     return err;
 }
 //----------------------------------------------
-// Добавить товарную позицию РБ
-int libAddPositionLarge_By   (const char      *goodsName,  // (Строка[0...224])   Название товара
-                              const char        *barcode,  // (Строка[0..18])     Артикул или штриховой код + A-не GTIN, B-GTIN, C-услуга
-                              double            quantity,  // (Дробное число)     Количество товара в товарной позиции
-                              double               price,  // (Дробное число)     Цена товара по данному артикулу
-                              unsigned char    taxNumber,  // (Целое число)       Номер ставки налога
-                              int            numGoodsPos,  // (Строка[0..4])      Номер товарной позиции
-                              unsigned char    numDepart) // (Целое число 1..16) Номер секции
+// я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜ товя┐╜я┐╜я┐╜я┐╜я┐╜ я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜ я┐╜я┐╜
+int libAddPositionLarge_By   (const char      *goodsName,  // (я┐╜я┐╜рокя┐╜[0...224])   я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜ товя┐╜я┐╜я┐╜
+                              const char        *barcode,  // (я┐╜я┐╜рокя┐╜[0..18])     я┐╜я┐╜тикя┐╜я┐╜ я┐╜я┐╜я┐╜ я┐╜я┐╜я┐╜я┐╜ховя┐╜я┐╜ я┐╜я┐╜я┐╜ + A-я┐╜я┐╜ GTIN, B-GTIN, C-я┐╜я┐╜я┐╜уга
+                              double            quantity,  // (я┐╜робя┐╜я┐╜я┐╜ я┐╜я┐╜сло)     я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜тво товя┐╜я┐╜я┐╜ я┐╜ товя┐╜рноя┐╜ я┐╜я┐╜я┐╜я┐╜ции
+                              double               price,  // (я┐╜робя┐╜я┐╜я┐╜ я┐╜я┐╜сло)     я┐╜я┐╜я┐╜я┐╜ товя┐╜я┐╜я┐╜ я┐╜я┐╜ я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜ я┐╜я┐╜тикя┐╜я┐╜я┐╜
+                              unsigned char    taxNumber,  // (я┐╜я┐╜я┐╜я┐╜я┐╜ я┐╜я┐╜сло)       я┐╜я┐╜я┐╜я┐╜я┐╜ я┐╜тавя┐╜я┐╜ я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜
+                              int            numGoodsPos,  // (я┐╜я┐╜рокя┐╜[0..4])      я┐╜я┐╜я┐╜я┐╜я┐╜ товя┐╜рноя┐╜ я┐╜я┐╜я┐╜я┐╜ции
+                              unsigned char    numDepart) // (я┐╜я┐╜я┐╜я┐╜я┐╜ я┐╜я┐╜сло 1..16) я┐╜я┐╜я┐╜я┐╜я┐╜ секции
 {
     int err;
     pirit_io.makeFirstPartPacketToSend(PIRIT_ADD_POSITION);
@@ -1428,13 +1428,13 @@ int libSetPosAddReq( const AdditionalReq &ar )
 }
 
 //------------------------------
-int libAddPosition(const char     *goodsName, // (Строка[0...224]) Название товара
-                   const char       *barcode, // (Строка[0..18]) Артикул или штриховой код товара/номер ТРК
-                   double           quantity, // (Дробное число) Количество товара в товарной позиции
-                   double              price, // (Дробное число) Цена товара по данному артикулу
-                   unsigned char   taxNumber, // (Целое число) Номер ставки налога
-                   int           numGoodsPos, // (Строка[0..4]) Номер товарной позиции
-                   unsigned char   numDepart, // (Целое число 1..16) Номер секции
+int libAddPosition(const char     *goodsName, // (я┐╜я┐╜рокя┐╜[0...224]) я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜ товя┐╜я┐╜я┐╜
+                   const char       *barcode, // (я┐╜я┐╜рокя┐╜[0..18]) я┐╜я┐╜тикя┐╜я┐╜ я┐╜я┐╜я┐╜ я┐╜я┐╜я┐╜я┐╜ховя┐╜я┐╜ я┐╜я┐╜я┐╜ товя┐╜я┐╜я┐╜/я┐╜я┐╜я┐╜я┐╜я┐╜ я┐╜я┐╜я┐╜
+                   double           quantity, // (я┐╜робя┐╜я┐╜я┐╜ я┐╜я┐╜сло) я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜тво товя┐╜я┐╜я┐╜ я┐╜ товя┐╜рноя┐╜ я┐╜я┐╜я┐╜я┐╜ции
+                   double              price, // (я┐╜робя┐╜я┐╜я┐╜ я┐╜я┐╜сло) я┐╜я┐╜я┐╜я┐╜ товя┐╜я┐╜я┐╜ я┐╜я┐╜ я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜ я┐╜я┐╜тикя┐╜я┐╜я┐╜
+                   unsigned char   taxNumber, // (я┐╜я┐╜я┐╜я┐╜я┐╜ я┐╜я┐╜сло) я┐╜я┐╜я┐╜я┐╜я┐╜ я┐╜тавя┐╜я┐╜ я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜
+                   int           numGoodsPos, // (я┐╜я┐╜рокя┐╜[0..4]) я┐╜я┐╜я┐╜я┐╜я┐╜ товя┐╜рноя┐╜ я┐╜я┐╜я┐╜я┐╜ции
+                   unsigned char   numDepart, // (я┐╜я┐╜я┐╜я┐╜я┐╜ я┐╜я┐╜сло 1..16) я┐╜я┐╜я┐╜я┐╜я┐╜ секции
                    unsigned char    coefType, //  0x00
                    const char      *coefName, //   0x00
                    double          coefValue) //  0
@@ -1442,14 +1442,14 @@ int libAddPosition(const char     *goodsName, // (Строка[0...224]) Название това
     return commandAddDelPosition(0x42, goodsName, barcode, quantity, price, taxNumber, numGoodsPos, numDepart, coefType, coefName, coefValue);
 }
 
-//Сторнировать товарную позицию
+//я┐╜я┐╜я┐╜рнировя┐╜я┐╜я┐╜ товя┐╜я┐╜я┐╜я┐╜я┐╜ я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜
 int libDelPosition(const char* goodsName, const char* barcode, double quantity, double price,
                    unsigned char taxNumber, int numGoodsPos, unsigned char numDepart)
 {
     return commandAddDelPosition(0x43, goodsName, barcode, quantity, price, taxNumber, numGoodsPos, numDepart, NONE, NULL, 0);
 }
 
-// Подитог
+// я┐╜я┐╜я┐╜я┐╜тог
 int libSubTotal()
 {
     int err = 0;
@@ -1509,23 +1509,23 @@ int commandAddDiscMarg(int numCom, unsigned char typeDiscount, const char* nameD
     return err;
 }
 
-// Добавить скидку
+// я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜ ския┐╜я┐╜я┐╜
 int libAddDiscount(unsigned char typeDiscount, const char* nameDiscount, long sum)
 {
     return commandAddDiscMarg(PIRIT_ADD_DISCOUNT, typeDiscount, nameDiscount, sum);
 }
 
-// Добавить наценку
+// я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜ я┐╜я┐╜ценя┐╜я┐╜
 int libAddMargin(unsigned char typeMargin, const char* nameMargin, long sum)
 {
     return commandAddDiscMarg(PIRIT_ADD_MARGIN, typeMargin, nameMargin, sum);
 }
 
 //===================================
-// Добавить тип оплаты Кайфовая
-int libAddPayment(unsigned char typePayment,    // (Целое число 0..15) Код типа платежа
-                  double                sum,    // (Дробное число) Сумма, принятая от покупателя по данному платежу
-                  const char*       infoStr)    // (Строка[0..40]) Дополнительный текст
+// я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜ тип я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜ я┐╜я┐╜я┐╜фовя┐╜я┐╜
+int libAddPayment(unsigned char typePayment,    // (я┐╜я┐╜я┐╜я┐╜я┐╜ я┐╜я┐╜сло 0..15) я┐╜я┐╜я┐╜ типя┐╜ я┐╜я┐╜я┐╜тежя┐╜
+                  double                sum,    // (я┐╜робя┐╜я┐╜я┐╜ я┐╜я┐╜сло) я┐╜уммя┐╜, я┐╜риня┐╜я┐╜я┐╜я┐╜ я┐╜я┐╜ я┐╜я┐╜я┐╜упателя┐╜ я┐╜я┐╜ я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜ я┐╜я┐╜я┐╜тежя┐╜
+                  const char*       infoStr)    // (я┐╜я┐╜рокя┐╜[0..40]) я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜теля┐╜я┐╜я┐╜я┐╜ текя┐╜я┐╜
 {
     int err;
     pirit_io.makeFirstPartPacketToSend(PIRIT_ADD_PAYMENT);
@@ -1535,7 +1535,7 @@ int libAddPayment(unsigned char typePayment,    // (Целое число 0..15) Код типа 
     pirit_io.addConstChar(infoStr);
     pirit_io.makeEndPartPacket();
 
-    // Открываем в непакетном
+    // я┐╜я┐╜я┐╜я┐╜ывая┐╜я┐╜ я┐╜ я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜тноя┐╜
     if (pirit_io.getPacketMode() == 0)
     {
         err = pirit_io.connectSock();
@@ -1554,10 +1554,10 @@ int libAddPayment(unsigned char typePayment,    // (Целое число 0..15) Код типа 
 }
 
 //===================================
-// Добавить тип оплаты Кайфовая для Белоруссии
-int libAddPayment_By(unsigned char typePayment,    // (Целое число 0..15) Код типа платежа
-                     double                sum,    // (Дробное число)     Сумма, принятая от покупателя по данному платежу
-                     const char*       infoStr)    // (Строка[0..40])     Дополнительный текст
+// я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜ тип я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜ я┐╜я┐╜я┐╜фовя┐╜я┐╜ я┐╜я┐╜я┐╜ я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜сии
+int libAddPayment_By(unsigned char typePayment,    // (я┐╜я┐╜я┐╜я┐╜я┐╜ я┐╜я┐╜сло 0..15) я┐╜я┐╜я┐╜ типя┐╜ я┐╜я┐╜я┐╜тежя┐╜
+                     double                sum,    // (я┐╜робя┐╜я┐╜я┐╜ я┐╜я┐╜сло)     я┐╜уммя┐╜, я┐╜риня┐╜я┐╜я┐╜я┐╜ я┐╜я┐╜ я┐╜я┐╜я┐╜упателя┐╜ я┐╜я┐╜ я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜ я┐╜я┐╜я┐╜тежя┐╜
+                     const char*       infoStr)    // (я┐╜я┐╜рокя┐╜[0..40])     я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜теля┐╜я┐╜я┐╜я┐╜ текя┐╜я┐╜
 {
     int err;
     pirit_io.makeFirstPartPacketToSend(0x47);
@@ -1566,7 +1566,7 @@ int libAddPayment_By(unsigned char typePayment,    // (Целое число 0..15) Код ти
     pirit_io.addConstChar(infoStr);
     pirit_io.makeEndPartPacket();
 
-    // Открываем в непакетном
+    // я┐╜я┐╜я┐╜я┐╜ывая┐╜я┐╜ я┐╜ я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜тноя┐╜
     if (pirit_io.getPacketMode() == 0)
     {
         err = pirit_io.connectSock();
@@ -1582,7 +1582,7 @@ int libAddPayment_By(unsigned char typePayment,    // (Целое число 0..15) Код ти
         }
     }
 
-    // Закрываем в непакетном
+    // я┐╜я┐╜я┐╜я┐╜ывая┐╜я┐╜ я┐╜ я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜тноя┐╜
     if (pirit_io.getPacketMode() == 0)
     {
         pirit_io.disconnectSock();
@@ -1592,7 +1592,7 @@ int libAddPayment_By(unsigned char typePayment,    // (Целое число 0..15) Код ти
 }
 
 //===================================
-// Добавить тип оплаты
+// я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜ тип я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜
 int libAddPaymentD(unsigned char typePayment, double sum, const char* infoStr)
 {
     int err;
@@ -1615,7 +1615,7 @@ int libAddPaymentD(unsigned char typePayment, double sum, const char* infoStr)
     return err;
 }
 
-//Внесение / изъ тие суммы
+//я┐╜я┐╜я┐╜сеня┐╜я┐╜ / я┐╜я┐╜я┐╜ тие я┐╜уммя┐╜
 int libCashInOut(const char* infoStr, double sum)
 {
     int err;
@@ -1650,7 +1650,7 @@ int libCashInOut(const char* infoStr, double sum)
     return err;
 }
 
-//Печать реквизита
+//я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜ рекя┐╜я┐╜я┐╜я┐╜я┐╜я┐╜
 int libPrintRequisite(unsigned char codeReq, unsigned char attributeText,
                       const char* str1, const char* str2,
                       const char* str3, const char* str4)
@@ -1667,7 +1667,7 @@ int libPrintRequisite(unsigned char codeReq, unsigned char attributeText,
 
     pirit_io.makeEndPartPacket();
 
-    // Открываем сокет в непакетном режиме
+    // я┐╜я┐╜я┐╜я┐╜ывая┐╜я┐╜ сокя┐╜я┐╜ я┐╜ я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜тноя┐╜ режя┐╜я┐╜я┐╜
     if (pirit_io.getPacketMode() == PACKET_OFF)
     {
         err = pirit_io.connectSock(); if( err != 0 ) return err;
@@ -1681,7 +1681,7 @@ int libPrintRequisite(unsigned char codeReq, unsigned char attributeText,
         }
     }
 
-    // Закрываем сокет в непакетном режиме
+    // я┐╜я┐╜я┐╜я┐╜ывая┐╜я┐╜ сокя┐╜я┐╜ я┐╜ я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜тноя┐╜ режя┐╜я┐╜я┐╜
     if (pirit_io.getPacketMode() == PACKET_OFF)
     {
         pirit_io.disconnectSock();
@@ -1690,7 +1690,7 @@ int libPrintRequisite(unsigned char codeReq, unsigned char attributeText,
     return err;
 }
 
-//Печать реквизита дл  ОФД
+//я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜ рекя┐╜я┐╜я┐╜я┐╜я┐╜я┐╜ я┐╜я┐╜  я┐╜я┐╜я┐╜
 int libPrintRequsitOFD(int codeReq, unsigned char attributeText, const char* reqName, const char* reqStr)
 {
     if ( (reqName == nullptr) || (reqStr == nullptr) )
@@ -1706,7 +1706,7 @@ int libPrintRequsitOFD(int codeReq, unsigned char attributeText, const char* req
     pirit_io.addConstChar(reqStr);
     pirit_io.makeEndPartPacket();
 
-    // Открываем в непакетном
+    // я┐╜я┐╜я┐╜я┐╜ывая┐╜я┐╜ я┐╜ я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜тноя┐╜
     if ( pirit_io.getPacketMode() == 0 )
     {
         err = pirit_io.connectSock();
@@ -1735,7 +1735,7 @@ int libPrintRequsitOFD(int codeReq, unsigned char attributeText, const char* req
     return err;
 }
 
-//Зарегистрировать сумму по отделу
+//я┐╜я┐╜регя┐╜я┐╜я┐╜я┐╜я┐╜ровя┐╜я┐╜я┐╜ я┐╜уммя┐╜ я┐╜я┐╜ я┐╜тдея┐╜я┐╜
 int libRegisterSumToDepart(unsigned char typeOperation, unsigned char numberDepart, long sum)
 {
     int err;
@@ -1759,7 +1759,7 @@ int libRegisterSumToDepart(unsigned char typeOperation, unsigned char numberDepa
     return err;
 }
 
-//Зарегистрировать сумму налога
+//я┐╜я┐╜регя┐╜я┐╜я┐╜я┐╜я┐╜ровя┐╜я┐╜я┐╜ я┐╜уммя┐╜ я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜
 int libRegisterTaxSum(unsigned char numberTax, long sum)
 {
     int err;
@@ -1782,7 +1782,7 @@ int libRegisterTaxSum(unsigned char numberTax, long sum)
     return err;
 }
 
-//Сравнить сумму по чеку
+//я┐╜равя┐╜я┐╜я┐╜я┐╜ я┐╜уммя┐╜ я┐╜я┐╜ чекя┐╜
 int libCompareSum(long sum)
 {
 	int err;
@@ -1804,7 +1804,7 @@ int libCompareSum(long sum)
 	return err;
 }
 
-//Открыть копию чека
+//я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜ я┐╜я┐╜я┐╜я┐╜я┐╜ чекя┐╜
 int libOpenCopyReceipt(unsigned char type, unsigned char numDepart, const char* nameCashier,
 					   int numCheck, int numCash, PLDate mpDate, PLTime mpTime)
 {
@@ -1833,13 +1833,13 @@ int libOpenCopyReceipt(unsigned char type, unsigned char numDepart, const char* 
 }
 
 
-//Обнулить наличные в денежном  щике
+//я┐╜я┐╜я┐╜улия┐╜я┐╜ я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜ я┐╜ я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜  щикя┐╜
 int libSetToZeroCashInCashDrawer()
 {
 	return pirit_io.commandVoid(0x54);
 }
 
-//Печать графики в документе
+//я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜ я┐╜я┐╜я┐╜фикя┐╜ я┐╜ я┐╜я┐╜я┐╜умея┐╜я┐╜я┐╜
 int libPrintPictureInDocument(int width, int height, int sm, unsigned char* data)
 {
 	pirit_io.makeFirstPartPacketToSend(0x55);
@@ -1850,7 +1850,7 @@ int libPrintPictureInDocument(int width, int height, int sm, unsigned char* data
 	return pirit_io.loadPictureToPirit(width, height, sm, data);
 }
 
-//Печать загруженной картинки
+//я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜ я┐╜я┐╜я┐╜я┐╜ужея┐╜я┐╜я┐╜я┐╜ я┐╜я┐╜я┐╜тиня┐╜я┐╜
 int libPrintPreloadedPicture(int sm, int number)
 {
 	int err;
@@ -1872,7 +1872,7 @@ int libPrintPreloadedPicture(int sm, int number)
 	return err;
 }
 
-//Технологическое обнуление
+//я┐╜я┐╜хноя┐╜я┐╜я┐╜я┐╜я┐╜я┐╜скоя┐╜ я┐╜я┐╜я┐╜улея┐╜я┐╜я┐╜
 int libTechnologicalReset(const PLDateTime *dateTime)
 {
 	int err;
@@ -1899,7 +1899,7 @@ int libTechnologicalReset(const PLDateTime *dateTime)
 	return err;
 }
 
-//Фискализация /Перерегистрация
+//я┐╜я┐╜ская┐╜я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜ /я┐╜я┐╜я┐╜я┐╜регя┐╜я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜
 int libFiscalization(const char *oldPassword, const char *regNumber, const char *INN, const char *newPassword)
 {
 	int err;
@@ -1920,7 +1920,7 @@ int libFiscalization(const char *oldPassword, const char *regNumber, const char 
 	return err;
 }
 
-//Фискализаци /Перерегистрация
+//я┐╜я┐╜ская┐╜я┐╜я┐╜я┐╜я┐╜я┐╜ /я┐╜я┐╜я┐╜я┐╜регя┐╜я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜
 int libRegistration(unsigned char type, const char *regNumber, const char *INN, int systemTax, int rej, const char *cashierName)
 {
 	int err;
@@ -1984,7 +1984,7 @@ int libRegistrationEx(unsigned char type, const char *regNumber, const char *INN
 	return err;
 }
 
-//Распечатать фискальный отчет по сменам
+//я┐╜я┐╜спея┐╜я┐╜я┐╜я┐╜я┐╜я┐╜ я┐╜я┐╜ская┐╜я┐╜я┐╜я┐╜я┐╜ я┐╜я┐╜я┐╜я┐╜я┐╜ я┐╜я┐╜ смея┐╜я┐╜я┐╜
 int libPrintFiscalReportByShifts(unsigned char typeReport, int startShiftNumber, int endShiftNumber, const char *password)
 {
 	int err;
@@ -2005,7 +2005,7 @@ int libPrintFiscalReportByShifts(unsigned char typeReport, int startShiftNumber,
 	return err;
 }
 
-//Распечатать фискальный отчет по датам
+//я┐╜я┐╜спея┐╜я┐╜я┐╜я┐╜я┐╜я┐╜ я┐╜я┐╜ская┐╜я┐╜я┐╜я┐╜я┐╜ я┐╜я┐╜я┐╜я┐╜я┐╜ я┐╜я┐╜ я┐╜я┐╜там
 int libPrintFiscalReportByDate(unsigned char typeReport, PLDate startDate, PLDate endDate, const char *password, const char *cashier)
 {
 	int err;
@@ -2027,13 +2027,13 @@ int libPrintFiscalReportByDate(unsigned char typeReport, PLDate startDate, PLDat
 	return err;
 }
 
-//Активизаци  ЭКЛЗ
+//я┐╜я┐╜тивя┐╜я┐╜я┐╜я┐╜я┐╜  я┐╜я┐╜я┐╜я┐╜
 int libActivizationECT()
 {
 	return pirit_io.commandVoid(0x70);
 }
 
-//Закрытие архива ЭКЛЗ
+//я┐╜я┐╜я┐╜я┐╜я┐╜тие я┐╜я┐╜хивя┐╜ я┐╜я┐╜я┐╜я┐╜
 int libCloseArchiveECT()
 {
 	return pirit_io.commandVoid(0x71);
@@ -2069,7 +2069,7 @@ int libCloseFN(const char *cashierName, uint32_t& fd, uint32_t& fpd, string& dat
 	return err;
 }
 
-//Распечатать контрольную ленту из ЭКЛЗ
+//я┐╜я┐╜спея┐╜я┐╜я┐╜я┐╜я┐╜я┐╜ я┐╜я┐╜я┐╜я┐╜роля┐╜я┐╜я┐╜я┐╜ я┐╜я┐╜я┐╜я┐╜я┐╜ я┐╜я┐╜ я┐╜я┐╜я┐╜я┐╜
 int libPrintControlTapeFromECT(int shiftNumber)
 {
 	int err;
@@ -2088,7 +2088,7 @@ int libPrintControlTapeFromECT(int shiftNumber)
 	return err;
 }
 
-//Распечатать документ из ЭКЛЗ
+//я┐╜я┐╜спея┐╜я┐╜я┐╜я┐╜я┐╜я┐╜ я┐╜я┐╜я┐╜умея┐╜я┐╜ я┐╜я┐╜ я┐╜я┐╜я┐╜я┐╜
 int libPrintDocumentFromECT(int KPKNumber)
 {
 	int err;
@@ -2107,7 +2107,7 @@ int libPrintDocumentFromECT(int KPKNumber)
 	return err;
 }
 
-//Распечатать отчет по сменам из ЭКЛЗ
+//я┐╜я┐╜спея┐╜я┐╜я┐╜я┐╜я┐╜я┐╜ я┐╜я┐╜я┐╜я┐╜я┐╜ я┐╜я┐╜ смея┐╜я┐╜я┐╜ я┐╜я┐╜ я┐╜я┐╜я┐╜я┐╜
 int libPrintReportFromECTByShifts(unsigned char typeReport, int startShiftNumber, int endShiftNumber)
 {
 	int err;
@@ -2128,7 +2128,7 @@ int libPrintReportFromECTByShifts(unsigned char typeReport, int startShiftNumber
 	return err;
 }
 
-//Распечатать отчет по датам из ЭКЛЗ
+//я┐╜я┐╜спея┐╜я┐╜я┐╜я┐╜я┐╜я┐╜ я┐╜я┐╜я┐╜я┐╜я┐╜ я┐╜я┐╜ я┐╜я┐╜там я┐╜я┐╜ я┐╜я┐╜я┐╜я┐╜
 int libPrintReportFromECTByDate(unsigned char typeReport, PLDate startDate, PLDate endDate)
 {
 	int err;
@@ -2149,13 +2149,13 @@ int libPrintReportFromECTByDate(unsigned char typeReport, PLDate startDate, PLDa
 	return err;
 }
 
-//Распечатать отчет по активизации ЭКЛЗ
+//я┐╜я┐╜спея┐╜я┐╜я┐╜я┐╜я┐╜я┐╜ я┐╜я┐╜я┐╜я┐╜я┐╜ я┐╜я┐╜ я┐╜я┐╜тивя┐╜я┐╜я┐╜ции я┐╜я┐╜я┐╜я┐╜
 int libPrintReportActivizationECT()
 {
 	return pirit_io.commandVoid(0x76);
 }
 
-//Распечатать отчет по смене из ЭКЛЗ
+//я┐╜я┐╜спея┐╜я┐╜я┐╜я┐╜я┐╜я┐╜ я┐╜я┐╜я┐╜я┐╜я┐╜ я┐╜я┐╜ смея┐╜я┐╜ я┐╜я┐╜ я┐╜я┐╜я┐╜я┐╜
 int libPrintReportFromECTByShift(int shiftNumber)
 {
 	int err;
@@ -2174,7 +2174,7 @@ int libPrintReportFromECTByShift(int shiftNumber)
 	return err;
 }
 
-//Запрос информации из ЭКЛЗ
+//я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜ я┐╜я┐╜я┐╜я┐╜рмации я┐╜я┐╜ я┐╜я┐╜я┐╜я┐╜
 MData libGetInfoFromECT(unsigned char number, long dataL1, long dataL2)
 {
 	int err;
@@ -2211,7 +2211,7 @@ MData libGetInfoFromECT(unsigned char number, long dataL1, long dataL2)
 	return mData;
 }
 
-//Запрос информации из ЭКЛЗ
+//я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜ я┐╜я┐╜я┐╜я┐╜рмации я┐╜я┐╜ я┐╜я┐╜я┐╜я┐╜
 int libGetInfoFromECT_NumberDoc(int *numDoc)
 {
 	int err;
@@ -2238,9 +2238,9 @@ int libGetInfoFromECT_NumberDoc(int *numDoc)
 
 
 /*!
- * Получить номер смены
+ * я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜ я┐╜я┐╜я┐╜я┐╜я┐╜ смея┐╜я┐╜
  * @param[out] shiftNumber
- * @return код ошибки
+ * @return я┐╜я┐╜я┐╜ я┐╜шибя┐╜я┐╜
  */
 int libGetInfoFromECT_ShiftNumber(int *shiftNumber)
 {
@@ -2259,7 +2259,7 @@ int libGetInfoFromECT_ShiftNumber(int *shiftNumber)
 }
 
 
-//Запрос информации из ЭКЛЗ
+//я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜ я┐╜я┐╜я┐╜я┐╜рмации я┐╜я┐╜ я┐╜я┐╜я┐╜я┐╜
 int libGetInfoFromECT_NumberFP(char *data)
 {
 	int err;
@@ -2282,7 +2282,7 @@ int libGetInfoFromECT_NumberFP(char *data)
 	return mData.errCode;
 }
 
-//Запрос информации из ЭКЛЗ
+//я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜ я┐╜я┐╜я┐╜я┐╜рмации я┐╜я┐╜ я┐╜я┐╜я┐╜я┐╜
 int libGetInfoFromECT_FP(int numDoc, char *data)
 {
 	int err;
@@ -2305,7 +2305,7 @@ int libGetInfoFromECT_FP(int numDoc, char *data)
 	return mData.errCode;
 }
 
-//Открыть денежный  щик
+//я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜ я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜  щик
 int libOpenCashDrawer(int pulseDuration)
 {
 	int err;
@@ -2324,19 +2324,19 @@ int libOpenCashDrawer(int pulseDuration)
 	return err;
 }
 
-//Получить статус денежного  щика
+//я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜ я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜ я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜  щикя┐╜
 MData libGetCashDrawerStatus()
 {
 	return pirit_io.commandVoidMData(0x81);
 }
 
-//Получить статус денежного  щика
+//я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜ я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜ я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜  щикя┐╜
 int getCashDrawerStatus(int *drawerStatus)
 {
 	return pirit_io.commandVoidInt(0x81, drawerStatus);
 }
 
-//Подать звуковой сигнал
+//я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜ я┐╜я┐╜укоя┐╜я┐╜я┐╜ сигя┐╜я┐╜я┐╜
 int libBeep(int duration)
 {
 	int err;
@@ -2355,7 +2355,7 @@ int libBeep(int duration)
 	return err;
 }
 
-//Авторизация  ККТ
+//я┐╜я┐╜я┐╜я┐╜ризя┐╜я┐╜я┐╜я┐╜  я┐╜я┐╜я┐╜
 int libAuthorization(PLDate mpDate, PLTime mpTime, const char *numKKT)
 {
 	int err;
@@ -2375,10 +2375,10 @@ int libAuthorization(PLDate mpDate, PLTime mpTime, const char *numKKT)
 	return err;
 }
 
-//Чтение блока пам ти ККТ
+//я┐╜теня┐╜я┐╜ я┐╜я┐╜я┐╜я┐╜я┐╜ я┐╜я┐╜я┐╜ я┐╜я┐╜ я┐╜я┐╜я┐╜
 MData libReadMemoryBlock(unsigned char type, long startAdress, long numBytes)
 {
-    // Блокировка мютексом не нужна (вызывается внутри других методов)
+    // я┐╜я┐╜я┐╜я┐╜я┐╜ровя┐╜я┐╜ я┐╜я┐╜тексом я┐╜я┐╜ я┐╜ужня┐╜ (я┐╜я┐╜я┐╜ывая┐╜я┐╜я┐╜я┐╜ я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜ я┐╜я┐╜угия┐╜ я┐╜я┐╜тодя┐╜я┐╜)
 	int err;
 	MData mData;
 	pirit_io.makeFirstPartPacketToSend(0x91);
@@ -2406,49 +2406,49 @@ MData libReadMemoryBlock(unsigned char type, long startAdress, long numBytes)
 	return mData;
 }
 
-//Распечатать сервисные данные
+//я┐╜я┐╜спея┐╜я┐╜я┐╜я┐╜я┐╜я┐╜ я┐╜я┐╜рвия┐╜я┐╜я┐╜я┐╜ я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜
 int libPrintServiceData()
 {
 	return pirit_io.commandVoid(PIRIT_PRINT_SERVICE_DATA);
 }
 
-//Распечатать сервисные данные
+//я┐╜я┐╜спея┐╜я┐╜я┐╜я┐╜я┐╜я┐╜ я┐╜я┐╜рвия┐╜я┐╜я┐╜я┐╜ я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜
 int libPrintServiceDataSKNO_By()
 {
     return pirit_io.commandVoid(PIRIT_PRINT_SERVICE_DATA_SKNO);
 }
 
 
-//Очищение фискальной пам ти
+//я┐╜я┐╜я┐╜щеня┐╜я┐╜ я┐╜я┐╜ская┐╜ьноя┐╜ я┐╜я┐╜я┐╜ я┐╜я┐╜
 int command0x9A()
 {
 	return pirit_io.commandVoid(0x9A);
 }
 
-//Очищение ЭКЛЗ
+//я┐╜я┐╜я┐╜щеня┐╜я┐╜ я┐╜я┐╜я┐╜я┐╜
 int command0x9B()
 {
 	return pirit_io.commandVoid(0x9B);
 }
 
-//Аварийное закрытие смены
+//я┐╜я┐╜я┐╜рийя┐╜я┐╜я┐╜ я┐╜я┐╜я┐╜я┐╜я┐╜тие смея┐╜я┐╜
 int libEmergencyCloseShift()
 {
 	return pirit_io.commandVoid(0xA0);
 }
 
-//Печать копии последнего Z-отчета
+//я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜ я┐╜я┐╜я┐╜я┐╜я┐╜ я┐╜я┐╜слея┐╜я┐╜я┐╜я┐╜я┐╜ Z-я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜
 int libPrintCopyLastZReport()
 {
 	return pirit_io.commandVoid(0xA1);
 }
 
-//Включение сервисного канала к ЭКЛЗ
+//я┐╜я┐╜я┐╜я┐╜ченя┐╜я┐╜ я┐╜я┐╜рвисноя┐╜я┐╜ я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜ я┐╜ я┐╜я┐╜я┐╜я┐╜
 int libEnableServiceChannelToECT()
 {
 	return pirit_io.commandVoid(0xA2);
 }
-//Печать копии чека фискализации/перерегистрации
+//я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜ я┐╜я┐╜я┐╜я┐╜я┐╜ чекя┐╜ я┐╜я┐╜ская┐╜я┐╜я┐╜я┐╜ции/я┐╜я┐╜я┐╜я┐╜регя┐╜я┐╜я┐╜я┐╜я┐╜ции
 int libPrintCopyReportFiscalization()
 {
 	return pirit_io.commandVoid(0xA3);
@@ -2466,13 +2466,13 @@ void libSetPort(int newPort)
     pirit_io.setPort_io(newPort);
 }
 
-// Выбор пароля в пакете взависимости от страны
+// я┐╜ыбоя┐╜ я┐╜я┐╜роля┐╜ я┐╜ я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜ я┐╜я┐╜я┐╜я┐╜я┐╜симя┐╜я┐╜я┐╜я┐╜ я┐╜я┐╜ я┐╜я┐╜раня┐╜
 void libSetPasswd(Country newCountry)
 {
     pirit_io.setPasswd(newCountry);
 }
 
-// Выбор вектора ошибок взависимости от страны
+// я┐╜ыбоя┐╜ я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜ я┐╜шибя┐╜я┐╜ я┐╜я┐╜я┐╜я┐╜я┐╜симя┐╜я┐╜я┐╜я┐╜ я┐╜я┐╜ я┐╜я┐╜раня┐╜
 void libSetErrors(Country newCountry)
 {
     switch (newCountry)
@@ -2495,7 +2495,7 @@ void libSetErrors(Country newCountry)
     }
 }
 
-//Начало работы
+//я┐╜я┐╜чаля┐╜ рабя┐╜я┐╜я┐╜
 int commandStart()
 {
 	PLDate mpDate;
@@ -2521,7 +2521,7 @@ int commandStart()
 	return err;
 }
 
-//Распечатать документы из СКЛ
+//я┐╜я┐╜спея┐╜я┐╜я┐╜я┐╜я┐╜я┐╜ я┐╜я┐╜я┐╜умея┐╜я┐╜я┐╜ я┐╜я┐╜ я┐╜я┐╜я┐╜
 int libPrintDocsFromECTSDByNumberDoc(int startNumber, int endNumber)
 {
 	int err;
@@ -2541,7 +2541,7 @@ int libPrintDocsFromECTSDByNumberDoc(int startNumber, int endNumber)
 	return err;
 }
 
-//Распечатать данные по сменам из СКЛ
+//я┐╜я┐╜спея┐╜я┐╜я┐╜я┐╜я┐╜я┐╜ я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜ я┐╜я┐╜ смея┐╜я┐╜я┐╜ я┐╜я┐╜ я┐╜я┐╜я┐╜
 int libPrintDocsFromECTSDByNumberShift(int startNumber, int endNumber)
 {
 	int err;
@@ -2561,7 +2561,7 @@ int libPrintDocsFromECTSDByNumberShift(int startNumber, int endNumber)
 	return err;
 }
 
-//Распечатать данные по датам из СКЛ
+//я┐╜я┐╜спея┐╜я┐╜я┐╜я┐╜я┐╜я┐╜ я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜ я┐╜я┐╜ я┐╜я┐╜там я┐╜я┐╜ я┐╜я┐╜я┐╜
 int libPrintDocsFromECTSDByDate(PLDate mpDateStart, PLDate mpDateEnd)
 {
 	int err;
@@ -2580,7 +2580,7 @@ int libPrintDocsFromECTSDByDate(PLDate mpDateStart, PLDate mpDateEnd)
 	return err;
 }
 
-//Распечатать контрольную ленту из ЭКЛЗ
+//я┐╜я┐╜спея┐╜я┐╜я┐╜я┐╜я┐╜я┐╜ я┐╜я┐╜я┐╜я┐╜роля┐╜я┐╜я┐╜я┐╜ я┐╜я┐╜я┐╜я┐╜я┐╜ я┐╜я┐╜ я┐╜я┐╜я┐╜я┐╜
 int libBLRPrintControlTapeFromECT()
 {
 	int err;
@@ -2645,22 +2645,22 @@ int saveLogoToFile(char *fileName)
 
 			long heightPict = strtol(tempStr, &tempPnt, 16);
 			unsigned char bmpHeader[sizeBMPHeader] = { 0x42,0x4D,
-													   0x00,0x00,0x00,0x00, //! 02(4) Размер файла
-													   0x00,0x00,0x00,0x00, // 06(4) Резерв
-													   0x3E,0x00,0x00,0x00, // 10(4) Смещение, с которого начинаетс  само изображение
-													   0x28,0x00,0x00,0x00, // 14(4) Размер заголовка BITMAP (в байтах) равно 40
-													   0x40,0x02,0x00,0x00, // 18(4) Ширина изображени  в пиксел х
-													   0x00,0x00,0x00,0x00, //! 22(4) Высота изображени  в пиксел х
-													   0x01,0x00,           // 26(2) Число плоскостей, должно быть 1
-													   0x01,0x00,           // 28(2) Бит/пиксел: 1, 4, 8 или 24
-													   0x00,0x00,0x00,0x00, // 30(4)Тип сжати
-													   0x00,0x00,0x00,0x00, // 34(4) 0 или размер сжатого изображени  в байтах.
-													   0x00,0x00,0x00,0x00, // 38(4)Горизонтальное разрешение, пиксел/м
-													   0x00,0x00,0x00,0x00, // 42(4)Вертикальное разрешение, пиксел/м
-													   0x02,0x00,0x00,0x00, // 46(4)Количество используемых цветов
-													   0x00,0x00,0x00,0x00, // 50(4)Количество "важных" цветов.
-					//Палитра (Карта цветов дл  N цветов), если используетс
-													   0x00,0x00,0x00,0x00, //54	4*N	Палитра
+													   0x00,0x00,0x00,0x00, //! 02(4) я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜ файя┐╜я┐╜
+													   0x00,0x00,0x00,0x00, // 06(4) я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜
+													   0x3E,0x00,0x00,0x00, // 10(4) я┐╜я┐╜я┐╜щеня┐╜я┐╜, я┐╜ я┐╜я┐╜я┐╜я┐╜рогя┐╜ я┐╜я┐╜чиня┐╜я┐╜я┐╜я┐╜  самя┐╜ я┐╜я┐╜я┐╜я┐╜ражя┐╜я┐╜я┐╜я┐╜
+													   0x28,0x00,0x00,0x00, // 14(4) я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜ я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜ BITMAP (я┐╜ я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜) равя┐╜я┐╜ 40
+													   0x40,0x02,0x00,0x00, // 18(4) я┐╜я┐╜риня┐╜ я┐╜я┐╜я┐╜я┐╜ражя┐╜я┐╜я┐╜  я┐╜ я┐╜я┐╜я┐╜сел я┐╜
+													   0x00,0x00,0x00,0x00, //! 22(4) я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜ я┐╜я┐╜я┐╜я┐╜ражя┐╜я┐╜я┐╜  я┐╜ я┐╜я┐╜я┐╜сел я┐╜
+													   0x01,0x00,           // 26(2) я┐╜я┐╜сло я┐╜я┐╜я┐╜скоя┐╜тей, я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜ я┐╜я┐╜я┐╜я┐╜ 1
+													   0x01,0x00,           // 28(2) я┐╜я┐╜я┐╜/я┐╜я┐╜я┐╜сел: 1, 4, 8 я┐╜я┐╜я┐╜ 24
+													   0x00,0x00,0x00,0x00, // 30(4)я┐╜я┐╜я┐╜ сжая┐╜я┐╜
+													   0x00,0x00,0x00,0x00, // 34(4) 0 я┐╜я┐╜я┐╜ разя┐╜я┐╜я┐╜ сжатогя┐╜ я┐╜я┐╜я┐╜я┐╜ражя┐╜я┐╜я┐╜  я┐╜ я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜.
+													   0x00,0x00,0x00,0x00, // 38(4)я┐╜я┐╜ризя┐╜я┐╜тальноя┐╜ разя┐╜я┐╜шеня┐╜я┐╜, я┐╜я┐╜я┐╜сел/я┐╜
+													   0x00,0x00,0x00,0x00, // 42(4)я┐╜я┐╜я┐╜тикя┐╜я┐╜ьноя┐╜ разя┐╜я┐╜шеня┐╜я┐╜, я┐╜я┐╜я┐╜сел/я┐╜
+													   0x02,0x00,0x00,0x00, // 46(4)я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜тво я┐╜споя┐╜я┐╜я┐╜уемя┐╜я┐╜ цветов
+													   0x00,0x00,0x00,0x00, // 50(4)я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜тво "я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜" цветов.
+					//я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜ (я┐╜я┐╜я┐╜я┐╜я┐╜ цветов я┐╜я┐╜  N цветов), я┐╜сли я┐╜споя┐╜я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜
+													   0x00,0x00,0x00,0x00, //54	4*N	я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜
 													   0xFF,0xFF,0xFF,0x00 };
 			bmpHeader[22] = (unsigned char)((heightPict & 0x000000FF));
 			bmpHeader[23] = (unsigned char)((heightPict & 0x0000FF00) >> 8);
@@ -2807,157 +2807,157 @@ unsigned long libFormatMessage(int errorCode, char *msgBuffer)
 	switch (errorCode)
 	{
 		case 0:
-			msg = "Команда выполнена без ошибок";
+			msg = "я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜ я┐╜ыпоя┐╜я┐╜я┐╜я┐╜я┐╜ я┐╜я┐╜я┐╜ я┐╜шибя┐╜я┐╜";
 			break;
 		case 1:
-			msg = "Функция  не выполнима при данном статусе ККТ";
+			msg = "я┐╜ункя┐╜я┐╜я┐╜  я┐╜я┐╜ я┐╜ыпоя┐╜я┐╜я┐╜я┐╜я┐╜ я┐╜я┐╜я┐╜ я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜ я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜ я┐╜я┐╜я┐╜";
 			break;
 		case 2:
-			msg = "В команде указан неверный номер функции";
+			msg = "я┐╜ я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜ укая┐╜я┐╜я┐╜ я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜ я┐╜я┐╜я┐╜я┐╜я┐╜ я┐╜ункции";
 			break;
 		case 3:
-			msg = "Некорректный формат или параметр команды";
+			msg = "я┐╜я┐╜я┐╜я┐╜я┐╜рекя┐╜я┐╜я┐╜я┐╜ я┐╜я┐╜рмая┐╜ я┐╜я┐╜я┐╜ я┐╜я┐╜рамя┐╜я┐╜я┐╜ я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜";
 			break;
 		case 4:
-			msg = "Переполнение буфера коммуникационного порта";
+			msg = "я┐╜я┐╜репя┐╜я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜ я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜ я┐╜я┐╜я┐╜я┐╜уния┐╜я┐╜циоя┐╜я┐╜я┐╜я┐╜я┐╜ я┐╜я┐╜я┐╜я┐╜я┐╜";
 			break;
 		case 5:
-			msg = "Таймаут при передаче байта информации";
+			msg = "я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜ я┐╜я┐╜я┐╜ я┐╜я┐╜редя┐╜я┐╜я┐╜ я┐╜я┐╜я┐╜я┐╜я┐╜ я┐╜я┐╜я┐╜я┐╜рмации";
 			break;
 		case 6:
-			msg = "В протоколе указан неверный пароль";
+			msg = "я┐╜ я┐╜я┐╜я┐╜токя┐╜я┐╜я┐╜ укая┐╜я┐╜я┐╜ я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜ я┐╜я┐╜роля┐╜";
 			break;
 		case 7:
-			msg = "Ошибка контрольной суммы в команде";
+			msg = "я┐╜шибя┐╜я┐╜ я┐╜я┐╜я┐╜я┐╜рольноя┐╜ я┐╜уммя┐╜ я┐╜ я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜";
 			break;
 		case 8:
-			msg = "Конец бумаги";
+			msg = "я┐╜я┐╜я┐╜я┐╜я┐╜ я┐╜умая┐╜я┐╜";
 			break;
 		case 9:
-			msg = "Принтер не готов";
+			msg = "я┐╜риня┐╜я┐╜я┐╜ я┐╜я┐╜ я┐╜я┐╜тов";
 			break;
 		case 10:
-			msg = "Текущая  смена больше 24 часов.";
+			msg = "я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜  смея┐╜я┐╜ я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜ 24 я┐╜я┐╜сов.";
 			break;
 		case 11:
-			msg = "Разница во времени, ККТ и указанной в команде начала работы, больше 8 минут";
+			msg = "я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜ я┐╜я┐╜ я┐╜ремя┐╜я┐╜я┐╜, я┐╜я┐╜я┐╜ я┐╜ укая┐╜я┐╜я┐╜я┐╜я┐╜я┐╜ я┐╜ я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜ я┐╜я┐╜чаля┐╜ рабя┐╜я┐╜я┐╜, я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜ 8 я┐╜я┐╜я┐╜я┐╜я┐╜";
 			break;
 		case 12:
-			msg = "Вводимая  дата более ранняя, чем дата последней фискальной операции";
+			msg = "я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜  я┐╜я┐╜я┐╜я┐╜ я┐╜я┐╜я┐╜я┐╜я┐╜ раня┐╜я┐╜я┐╜, чем я┐╜я┐╜я┐╜я┐╜ я┐╜я┐╜слея┐╜я┐╜я┐╜я┐╜ я┐╜я┐╜ская┐╜ьноя┐╜ я┐╜я┐╜я┐╜я┐╜я┐╜ции";
 			break;
 		case 13:
-			msg = "Неверный пароль доступа к ФП";
+			msg = "я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜ я┐╜я┐╜роля┐╜ я┐╜я┐╜я┐╜я┐╜упа я┐╜ я┐╜я┐╜";
 			break;
 		case 14:
-			msg = "Отрицательный результат";
+			msg = "я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜теля┐╜я┐╜я┐╜я┐╜ резя┐╜я┐╜я┐╜я┐╜я┐╜я┐╜";
 			break;
 		case 15:
-			msg = "Для  выполнени  команды необходимо закрыть смену";
+			msg = "я┐╜я┐╜я┐╜  я┐╜ыпоя┐╜я┐╜я┐╜я┐╜я┐╜  я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜ я┐╜я┐╜я┐╜я┐╜ходя┐╜я┐╜я┐╜ я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜ смея┐╜я┐╜";
 			break;
 		case 32:
-			msg = "Фатальная ошибка ККТ.";
+			msg = "я┐╜я┐╜тальная┐╜ я┐╜шибя┐╜я┐╜ я┐╜я┐╜я┐╜.";
 			break;
 		case 33:
-			msg = "Нет свободного места в фискальной памяти ККТ";
+			msg = "я┐╜я┐╜я┐╜ своя┐╜я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜ я┐╜я┐╜я┐╜я┐╜я┐╜ я┐╜ я┐╜я┐╜ская┐╜ьноя┐╜ я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜ я┐╜я┐╜я┐╜";
 			break;
 		case 65:
-			msg = "Некорректный  формат или параметр команды ЭКЛЗ";
+			msg = "я┐╜я┐╜я┐╜я┐╜я┐╜рекя┐╜я┐╜я┐╜я┐╜  я┐╜я┐╜рмая┐╜ я┐╜я┐╜я┐╜ я┐╜я┐╜рамя┐╜я┐╜я┐╜ я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜ я┐╜я┐╜я┐╜я┐╜";
 			break;
 		case 66:
-			msg = "Некорректное состояние ЭКЛЗ";
+			msg = "я┐╜я┐╜я┐╜я┐╜я┐╜ректноя┐╜ я┐╜я┐╜я┐╜я┐╜я┐╜яния┐╜ я┐╜я┐╜я┐╜я┐╜";
 			break;
 		case 67:
-			msg = "Авария ЭКЛЗ";
+			msg = "я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜ я┐╜я┐╜я┐╜я┐╜";
 			break;
 		case 68:
-			msg = "Авария КС (Криптографического сопроцессора) в составе ЭКЛЗ";
+			msg = "я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜ я┐╜я┐╜ (я┐╜риптогя┐╜я┐╜я┐╜я┐╜я┐╜я┐╜скоя┐╜я┐╜ сопя┐╜я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜) я┐╜ я┐╜я┐╜я┐╜тавя┐╜ я┐╜я┐╜я┐╜я┐╜";
 			break;
 		case 69:
-			msg = "Исчерпан временной ресурс использовани  ЭКЛЗ";
+			msg = "я┐╜я┐╜я┐╜я┐╜рпая┐╜ я┐╜ремя┐╜я┐╜я┐╜я┐╜я┐╜ я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜ я┐╜споя┐╜ьзоя┐╜я┐╜я┐╜я┐╜  я┐╜я┐╜я┐╜я┐╜";
 			break;
 		case 70:
-			msg = "ЭКЛЗ переполнена";
+			msg = "я┐╜я┐╜я┐╜я┐╜ я┐╜я┐╜репя┐╜я┐╜я┐╜я┐╜я┐╜я┐╜";
 			break;
 		case 71:
-			msg = "Неверные дата или врем ";
+			msg = "я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜ я┐╜я┐╜я┐╜я┐╜ я┐╜я┐╜я┐╜ я┐╜рем ";
 			break;
 		case 72:
-			msg = "Нет запрошенных данных";
+			msg = "я┐╜я┐╜я┐╜ я┐╜я┐╜я┐╜я┐╜я┐╜шеня┐╜я┐╜я┐╜ я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜";
 			break;
 		case 73:
-			msg = "Переполнение (отрицательный итог документа, слишком много отделов для  клиента)";
+			msg = "я┐╜я┐╜репя┐╜я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜ (я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜теля┐╜я┐╜я┐╜я┐╜ я┐╜тог я┐╜я┐╜я┐╜умея┐╜я┐╜я┐╜, слишкоя┐╜ я┐╜я┐╜я┐╜я┐╜я┐╜ я┐╜тдея┐╜я┐╜я┐╜ я┐╜я┐╜я┐╜  я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜)";
 			break;
 		case 74:
-			msg = "Нет ответа от ЭКЛЗ";
+			msg = "я┐╜я┐╜я┐╜ я┐╜твея┐╜я┐╜ я┐╜я┐╜ я┐╜я┐╜я┐╜я┐╜";
 			break;
 		case 75:
-			msg = "Ошибка при обмене данными с ЭКЛЗ";
+			msg = "я┐╜шибя┐╜я┐╜ я┐╜я┐╜я┐╜ я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜ я┐╜я┐╜я┐╜я┐╜ыми я┐╜ я┐╜я┐╜я┐╜я┐╜";
 			break;
 		case 1001:
-			msg = "При приёме: первый байт не STX";
+			msg = "я┐╜я┐╜я┐╜ я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜: я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜ я┐╜я┐╜я┐╜я┐╜ я┐╜я┐╜ STX";
 			break;
 		case 1002:
-			msg = "При приёме: не совпадает ID пакета";
+			msg = "я┐╜я┐╜я┐╜ я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜: я┐╜я┐╜ совя┐╜я┐╜я┐╜я┐╜я┐╜я┐╜ ID я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜";
 			break;
 		case 1003:
-			msg = "При приёме: не совпадает номер команды 1-ый байт";
+			msg = "я┐╜я┐╜я┐╜ я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜: я┐╜я┐╜ совя┐╜я┐╜я┐╜я┐╜я┐╜я┐╜ я┐╜я┐╜я┐╜я┐╜я┐╜ я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜ 1-я┐╜я┐╜ я┐╜я┐╜я┐╜я┐╜";
 			break;
 		case 1004:
-			msg = "При приёме: не совпадает номер команды 2-ой байт";
+			msg = "я┐╜я┐╜я┐╜ я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜: я┐╜я┐╜ совя┐╜я┐╜я┐╜я┐╜я┐╜я┐╜ я┐╜я┐╜я┐╜я┐╜я┐╜ я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜ 2-я┐╜я┐╜ я┐╜я┐╜я┐╜я┐╜";
 			break;
 		case 1005:
-			msg = "При приёме: последний байт не ETX";
+			msg = "я┐╜я┐╜я┐╜ я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜: я┐╜я┐╜слея┐╜я┐╜я┐╜я┐╜ я┐╜я┐╜я┐╜я┐╜ я┐╜я┐╜ ETX";
 			break;
 		case 1006:
-			msg = "При приёме: ошибка контрольной суммы CRC";
+			msg = "я┐╜я┐╜я┐╜ я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜: я┐╜шибя┐╜я┐╜ я┐╜я┐╜я┐╜я┐╜рольноя┐╜ я┐╜уммя┐╜ CRC";
 			break;
 		case 1007:
-			msg = "При отправке данных данные отправились не полностью";
+			msg = "я┐╜я┐╜я┐╜ я┐╜я┐╜я┐╜равя┐╜я┐╜ я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜ я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜ я┐╜я┐╜я┐╜равя┐╜я┐╜я┐╜я┐╜я┐╜ я┐╜я┐╜ я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜";
 			break;
 		case 1008:
-			msg = "При приёме: слишком короткий пакет";
+			msg = "я┐╜я┐╜я┐╜ я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜: слишкоя┐╜ я┐╜я┐╜я┐╜я┐╜ткия┐╜ я┐╜я┐╜я┐╜я┐╜я┐╜";
 			break;
 		case 1009:
-			msg = "При приёме: потеря связи с ФР";
+			msg = "я┐╜я┐╜я┐╜ я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜: я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜ я┐╜я┐╜язи я┐╜ я┐╜я┐╜";
 			break;
 		case 1010:
-			msg = "При обработке ответа: кол-во параметров не соответствует заявленному";
+			msg = "я┐╜я┐╜я┐╜ я┐╜я┐╜рабя┐╜тке я┐╜твея┐╜я┐╜: я┐╜я┐╜я┐╜-я┐╜я┐╜ я┐╜я┐╜рамя┐╜я┐╜ров я┐╜я┐╜ соотвея┐╜я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜ я┐╜я┐╜явля┐╜я┐╜я┐╜я┐╜я┐╜я┐╜";
 			break;
 		case 1011:
-			msg = "ФР не отвечает на команду Ping";
+			msg = "я┐╜я┐╜ я┐╜я┐╜ я┐╜твечаея┐╜ я┐╜я┐╜ я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜ Ping";
 			break;
 		case 1100:
-			msg = "Ошибка открытия/создания файла";
+			msg = "я┐╜шибя┐╜я┐╜ я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜/созя┐╜я┐╜я┐╜я┐╜я┐╜ файя┐╜я┐╜";
 			break;
 		case 1101:
-			msg = "Ошибка чтения из файла";
+			msg = "я┐╜шибя┐╜я┐╜ я┐╜теня┐╜я┐╜ я┐╜я┐╜ файя┐╜я┐╜";
 			break;
 		case 1102:
-			msg = "Ошибка записи в файл";
+			msg = "я┐╜шибя┐╜я┐╜ я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜ я┐╜ файя┐╜";
 			break;
 		case 1103:
-			msg = "Ошибка записи в файл. Данные записаны не полностью.";
+			msg = "я┐╜шибя┐╜я┐╜ я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜ я┐╜ файя┐╜. я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜ я┐╜я┐╜я┐╜я┐╜саня┐╜ я┐╜я┐╜ я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜.";
 			break;
 		case 2000:
-			msg = "Порт не открыт";
+			msg = "я┐╜я┐╜я┐╜я┐╜ я┐╜я┐╜ я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜";
 			break;
 		case 2001:
-			msg = "Невозможно открыть порт";
+			msg = "я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜ я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜ я┐╜я┐╜я┐╜я┐╜";
 			break;
 		case 2002:
-			msg = "Ошибка порта при открытии";
+			msg = "я┐╜шибя┐╜я┐╜ я┐╜я┐╜я┐╜я┐╜я┐╜ я┐╜я┐╜я┐╜ я┐╜я┐╜я┐╜я┐╜я┐╜тии";
 			break;
 		case 2003:
-			msg = "Ошибка порта при инициализации";
+			msg = "я┐╜шибя┐╜я┐╜ я┐╜я┐╜я┐╜я┐╜я┐╜ я┐╜я┐╜я┐╜ я┐╜я┐╜я┐╜циая┐╜я┐╜я┐╜я┐╜ции";
 			break;
 		case 2010:
-			msg = "Ошибка соединения с БИОС";
+			msg = "я┐╜шибя┐╜я┐╜ соея┐╜я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜ я┐╜ я┐╜я┐╜я┐╜я┐╜";
 			break;
 		case 2011:
-			msg = "Ошибка создания сокета";
+			msg = "я┐╜шибя┐╜я┐╜ созя┐╜я┐╜я┐╜я┐╜я┐╜ сокя┐╜я┐╜я┐╜";
 			break;
 		default:
-			msg = "Неизвестная ошибка";
+			msg = "я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜тная┐╜ я┐╜шибя┐╜я┐╜";
 			break;
 	}
 
@@ -2976,7 +2976,7 @@ unsigned long libFormatMessage(int errorCode, char *msgBuffer)
 
 //===================================================================================
 // 1
-// Получить номер ФН
+// я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜ я┐╜я┐╜я┐╜я┐╜я┐╜ я┐╜я┐╜
 int libGetFN_Number(char *fnNum)
 {
     int err;
@@ -3005,7 +3005,7 @@ int libGetFN_Number(char *fnNum)
 
 //===================================================================================
 // 2
-// Получить номер последнего фискального документа
+// я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜ я┐╜я┐╜я┐╜я┐╜я┐╜ я┐╜я┐╜слея┐╜я┐╜я┐╜я┐╜я┐╜ я┐╜я┐╜ская┐╜ьноя┐╜я┐╜ я┐╜я┐╜я┐╜умея┐╜я┐╜я┐╜
 int libLastFiscDoc_Number(char *fiscalDocNumber)
 {
     int err;
@@ -3035,7 +3035,7 @@ int libLastFiscDoc_Number(char *fiscalDocNumber)
 
 //===================================================================================
 // 3
-// Вернуть состояние текущей смены
+// я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜ я┐╜я┐╜я┐╜я┐╜я┐╜яния┐╜ текя┐╜щей смея┐╜я┐╜
 int libGetCurShiftState(int *shiftNum, int *isOpened, int *numRecieptInShift)
 {
     int err;
@@ -3071,31 +3071,31 @@ int libGetCurShiftState(int *shiftNum, int *isOpened, int *numRecieptInShift)
 
 //===================================================================================
 // 4
-// Открыть документ 0x30
-int libOpenDocument(DOC_TYPES                   type,   //  тип открываемого документа
-					DOC_FORMATS                  fmt,   //  режим формирования документа
-					DOC_REQ_PRINT            doc_req,   //  режим печати реквизитов
-					int              numOfDepartment,   //  (Целое число 1..99) Номер отдела
-					string            nameOfOperator,   //  Имя оператора
-					int                     numOfDoc,   //  Обязателен при уст флага "Нумер чеков со стороны внешн. программы"
-					SNO_TYPES                    sno    //  Система налогообложения
+// я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜ я┐╜я┐╜я┐╜умея┐╜я┐╜ 0x30
+int libOpenDocument(DOC_TYPES                   type,   //  тип я┐╜я┐╜я┐╜я┐╜ывая┐╜я┐╜я┐╜я┐╜я┐╜ я┐╜я┐╜я┐╜умея┐╜я┐╜я┐╜
+					DOC_FORMATS                  fmt,   //  режя┐╜я┐╜ я┐╜я┐╜рмировя┐╜я┐╜я┐╜я┐╜ я┐╜я┐╜я┐╜умея┐╜я┐╜я┐╜
+					DOC_REQ_PRINT            doc_req,   //  режя┐╜я┐╜ я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜ рекя┐╜я┐╜я┐╜я┐╜тов
+					int              numOfDepartment,   //  (я┐╜я┐╜я┐╜я┐╜я┐╜ я┐╜я┐╜сло 1..99) я┐╜я┐╜я┐╜я┐╜я┐╜ я┐╜тдея┐╜я┐╜
+					string            nameOfOperator,   //  я┐╜я┐╜я┐╜ я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜
+					int                     numOfDoc,   //  я┐╜я┐╜язателя┐╜я┐╜ я┐╜я┐╜я┐╜ я┐╜я┐╜я┐╜ флая┐╜я┐╜ "я┐╜умея┐╜ чекя┐╜я┐╜ я┐╜я┐╜ я┐╜я┐╜я┐╜роня┐╜ я┐╜я┐╜я┐╜я┐╜я┐╜. я┐╜рограмя┐╜я┐╜"
+					SNO_TYPES                    sno    //  я┐╜я┐╜я┐╜темя┐╜ я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜
 					)
 {
     int err;
 	//----------------------
     pirit_io.makeFirstPartPacketToSend(0x30);
     //----------------------
-	// Режим и тип документа
+	// я┐╜я┐╜я┐╜я┐╜я┐╜ я┐╜ тип я┐╜я┐╜я┐╜умея┐╜я┐╜я┐╜
 	unsigned char regAndTypeOfDoc =  type | fmt | doc_req;
 
 	pirit_io.addByte(regAndTypeOfDoc);
-	// Номер отдела
+	// я┐╜я┐╜я┐╜я┐╜я┐╜ я┐╜тдея┐╜я┐╜
 	pirit_io.addByte(numOfDepartment);
-	// Имя оператора
+	// я┐╜я┐╜я┐╜ я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜
 	pirit_io.addConstChar(nameOfOperator.c_str());
-	// Номер документа
+	// я┐╜я┐╜я┐╜я┐╜я┐╜ я┐╜я┐╜я┐╜умея┐╜я┐╜я┐╜
 	pirit_io.addByte(numOfDoc);
-	// СНО
+	// я┐╜я┐╜я┐╜
 	pirit_io.addByte(sno);
     pirit_io.makeEndPartPacket();
 	//----------------------
@@ -3131,25 +3131,25 @@ int libOpenDocument(DOC_TYPES                   type,   //  тип открываемого док
 
 //===================================================================================
 // 4
-// Открыть документ 0x30 для РБ
-int libOpenDocument_By    (DOC_TYPES_BY                type,   //  тип открываемого документа
-                           DOC_FORMATS                  fmt,   //  режим формирования документа
-                           DOC_REQ_PRINT            doc_req,   //  режим печати реквизитов
-                           int              numOfDepartment,   //  Номер отдела
-                           string            nameOfOperator,   //  Имя оператора
-                           int                     numOfDoc)  //  Обязателен при уст флага "Нумер чеков со стороны внешн. программы"
+// я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜ я┐╜я┐╜я┐╜умея┐╜я┐╜ 0x30 я┐╜я┐╜я┐╜ я┐╜я┐╜
+int libOpenDocument_By    (DOC_TYPES_BY                type,   //  тип я┐╜я┐╜я┐╜я┐╜ывая┐╜я┐╜я┐╜я┐╜я┐╜ я┐╜я┐╜я┐╜умея┐╜я┐╜я┐╜
+                           DOC_FORMATS                  fmt,   //  режя┐╜я┐╜ я┐╜я┐╜рмировя┐╜я┐╜я┐╜я┐╜ я┐╜я┐╜я┐╜умея┐╜я┐╜я┐╜
+                           DOC_REQ_PRINT            doc_req,   //  режя┐╜я┐╜ я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜ рекя┐╜я┐╜я┐╜я┐╜тов
+                           int              numOfDepartment,   //  я┐╜я┐╜я┐╜я┐╜я┐╜ я┐╜тдея┐╜я┐╜
+                           string            nameOfOperator,   //  я┐╜я┐╜я┐╜ я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜
+                           int                     numOfDoc)  //  я┐╜я┐╜язателя┐╜я┐╜ я┐╜я┐╜я┐╜ я┐╜я┐╜я┐╜ флая┐╜я┐╜ "я┐╜умея┐╜ чекя┐╜я┐╜ я┐╜я┐╜ я┐╜я┐╜я┐╜роня┐╜ я┐╜я┐╜я┐╜я┐╜я┐╜. я┐╜рограмя┐╜я┐╜"
 {
     int err;
     //----------------------
     pirit_io.makeFirstPartPacketToSend(PIRIT_OPEN_DOCUMENT);
-    // Режим и тип документа
+    // я┐╜я┐╜я┐╜я┐╜я┐╜ я┐╜ тип я┐╜я┐╜я┐╜умея┐╜я┐╜я┐╜
     unsigned char regAndTypeOfDoc =  type | fmt | doc_req;
     pirit_io.addByte(regAndTypeOfDoc);
-    // Номер отдела
+    // я┐╜я┐╜я┐╜я┐╜я┐╜ я┐╜тдея┐╜я┐╜
     pirit_io.addByte(numOfDepartment);
-    // Имя оператора
+    // я┐╜я┐╜я┐╜ я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜
     pirit_io.addConstChar(nameOfOperator.c_str());
-    // Номер документа
+    // я┐╜я┐╜я┐╜я┐╜я┐╜ я┐╜я┐╜я┐╜умея┐╜я┐╜я┐╜
     pirit_io.addByte(numOfDoc);
     pirit_io.makeEndPartPacket();
     //----------------------
@@ -3181,10 +3181,10 @@ int libOpenDocument_By    (DOC_TYPES_BY                type,   //  тип открываем
 
 //===================================================================================
 // 5
-// Вернуть состояние ФН
-int libGetCurFNState(int     *fnState, // Состояние ФН
-                     int *curDocState, // Состояние текущего документа
-                     int   *warnFlags) // Флаги предупреждения
+// я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜ я┐╜я┐╜я┐╜я┐╜я┐╜яния┐╜ я┐╜я┐╜
+int libGetCurFNState(int     *fnState, // я┐╜я┐╜я┐╜я┐╜я┐╜яния┐╜ я┐╜я┐╜
+                     int *curDocState, // я┐╜я┐╜я┐╜я┐╜я┐╜яния┐╜ текя┐╜щегя┐╜ я┐╜я┐╜я┐╜умея┐╜я┐╜я┐╜
+                     int   *warnFlags) // я┐╜я┐╜я┐╜я┐╜я┐╜ я┐╜редя┐╜я┐╜режя┐╜я┐╜я┐╜я┐╜я┐╜
 {
     int err;
 
@@ -3217,11 +3217,11 @@ int libGetCurFNState(int     *fnState, // Состояние ФН
 
 //===================================================================================
 // 6
-// Вернуть состояние обмена с ОФД
-int libGetStatusOFD( int            *ofdState,                     // Статус обмена
-					 int     *numOfDocsToSend,                     // Количество документов для передачи     в ОФД
-					 int       *numFirstToSnd,                     // Номер первого документа для передачи   в ОФД
-					 char      *firstDateTime )                    // Дата/время первого док-та для передачи в ОФД
+// я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜ я┐╜я┐╜я┐╜я┐╜я┐╜яния┐╜ я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜ я┐╜ я┐╜я┐╜я┐╜
+int libGetStatusOFD( int            *ofdState,                     // я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜ я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜
+					 int     *numOfDocsToSend,                     // я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜тво я┐╜я┐╜я┐╜умея┐╜тов я┐╜я┐╜я┐╜ я┐╜я┐╜редя┐╜я┐╜я┐╜     я┐╜ я┐╜я┐╜я┐╜
+					 int       *numFirstToSnd,                     // я┐╜я┐╜я┐╜я┐╜я┐╜ я┐╜я┐╜рвоя┐╜я┐╜ я┐╜я┐╜я┐╜умея┐╜я┐╜я┐╜ я┐╜я┐╜я┐╜ я┐╜я┐╜редя┐╜я┐╜я┐╜   я┐╜ я┐╜я┐╜я┐╜
+					 char      *firstDateTime )                    // я┐╜я┐╜я┐╜я┐╜/я┐╜ремя┐╜ я┐╜я┐╜рвоя┐╜я┐╜ я┐╜я┐╜я┐╜-я┐╜я┐╜ я┐╜я┐╜я┐╜ я┐╜я┐╜редя┐╜я┐╜я┐╜ я┐╜ я┐╜я┐╜я┐╜
 {
     int err = 0;
     pirit_io.makeFirstPartPacketToSend(PIRIT_GET_INFO_FROM_FN);
@@ -3261,7 +3261,7 @@ int libGetStatusOFD( int            *ofdState,                     // Статус обм
 
 
 //===================================================================================
-// 	Вернуть дату и время регистрации  4
+// 	я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜ я┐╜я┐╜я┐╜я┐╜ я┐╜ я┐╜ремя┐╜ регя┐╜я┐╜я┐╜я┐╜я┐╜ции  4
 int libGetRegDateTime( char      *regDateTime )
 {
     int err = 0;
@@ -3298,7 +3298,7 @@ int libGetRegDateTime( char      *regDateTime )
 
 
 //===================================================================================
-// 	Вернуть номер ФД последней регистрации  5
+// 	я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜ я┐╜я┐╜я┐╜я┐╜я┐╜ я┐╜я┐╜ я┐╜я┐╜слея┐╜я┐╜я┐╜я┐╜ регя┐╜я┐╜я┐╜я┐╜я┐╜ции  5
 int libGetRegFDNumber( int &fdNumber )
 {
     int err = 0;
@@ -3349,15 +3349,15 @@ int libSetFnDateTime(const DateTime &dateTime)
     return res;
 }
 //===================================================================================
-// 	Запрос номера ФД и общей длины ТЛВ-структуры последней рег/перерег (для последующей выгрузки)
-int libGetRegistrSTLVProps( int   &numberOfFD,    // Номер ФД, для которого требуется получить ТЛВ
-    					    int     &lenTotal,    // Длина полученного ТЛВ пакета
-    					    int     &docType)     // Тип документа
+// 	я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜ я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜ я┐╜я┐╜ я┐╜ я┐╜я┐╜щей я┐╜я┐╜я┐╜я┐╜я┐╜ я┐╜я┐╜я┐╜-я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜ я┐╜я┐╜слея┐╜я┐╜я┐╜я┐╜ рег/я┐╜я┐╜я┐╜я┐╜рег (я┐╜я┐╜я┐╜ я┐╜я┐╜слея┐╜я┐╜я┐╜щей я┐╜я┐╜я┐╜я┐╜узкя┐╜)
+int libGetRegistrSTLVProps( int   &numberOfFD,    // я┐╜я┐╜я┐╜я┐╜я┐╜ я┐╜я┐╜, я┐╜я┐╜я┐╜ я┐╜я┐╜я┐╜я┐╜рогя┐╜ я┐╜ребя┐╜я┐╜я┐╜я┐╜я┐╜ я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜ я┐╜я┐╜я┐╜
+    					    int     &lenTotal,    // я┐╜я┐╜я┐╜я┐╜я┐╜ я┐╜я┐╜я┐╜я┐╜ченя┐╜я┐╜я┐╜я┐╜ я┐╜я┐╜я┐╜ я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜
+    					    int     &docType)     // я┐╜я┐╜я┐╜ я┐╜я┐╜я┐╜умея┐╜я┐╜я┐╜
 {
     int res = 0;
 
     //---------------------------
-    // 1 Получаем номер ФД последней регистрации/перерегистрации
+    // 1 я┐╜я┐╜я┐╜я┐╜чаея┐╜ я┐╜я┐╜я┐╜я┐╜я┐╜ я┐╜я┐╜ я┐╜я┐╜слея┐╜я┐╜я┐╜я┐╜ регя┐╜я┐╜я┐╜я┐╜я┐╜ции/я┐╜я┐╜я┐╜я┐╜регя┐╜я┐╜я┐╜я┐╜я┐╜ции
     numberOfFD = 0;
     res = libGetRegFDNumber( numberOfFD );
 
@@ -3372,7 +3372,7 @@ int libGetRegistrSTLVProps( int   &numberOfFD,    // Номер ФД, для которого треб
         printf("libGetRegistrTLV(1 step): \n\t Num FD of reg/rereg = %d\n", numberOfFD );
     }
     //---------------------------
-    // 2 Получаем по номеру ФД последней регистрации/перерегистрации аттрибуты ТЛВ структуры
+    // 2 я┐╜я┐╜я┐╜я┐╜чаея┐╜ я┐╜я┐╜ я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜ я┐╜я┐╜ я┐╜я┐╜слея┐╜я┐╜я┐╜я┐╜ регя┐╜я┐╜я┐╜я┐╜я┐╜ции/я┐╜я┐╜я┐╜я┐╜регя┐╜я┐╜я┐╜я┐╜я┐╜ции я┐╜я┐╜я┐╜рибя┐╜я┐╜я┐╜ я┐╜я┐╜я┐╜ я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜
     pirit_io.makeFirstPartPacketToSend(PIRIT_GET_INFO_FROM_FN);
     pirit_io.addByte(EXCHANGE_FN_SELECT_TLV_DOC);
 	pirit_io.addByte(numberOfFD);
@@ -3391,7 +3391,7 @@ int libGetRegistrSTLVProps( int   &numberOfFD,    // Номер ФД, для которого треб
         printf("\nlibGetRegistrTLV(2 step): \n\t  Command RES =  %d\n",      res);
         printf("libGetRegistrTLV(2 step): \n\t Doc Type = %d, len of TLV struct = %d\n", docType, lenTotal);
     }
-    // Обнуляемся в случае ошибки
+    // я┐╜я┐╜я┐╜я┐╜я┐╜яемя┐╜я┐╜ я┐╜ я┐╜я┐╜я┐╜чае я┐╜шибя┐╜я┐╜
 	if(res != 0)
 	{
         lenTotal = 0;
@@ -3400,15 +3400,15 @@ int libGetRegistrSTLVProps( int   &numberOfFD,    // Номер ФД, для которого треб
     return res;
 }
 //===================================================================================
-// 	Запрос номера ФД и общей длины ТЛВ-структуры последней (для последующей выгрузки)
-int libGetDocSTLV         ( const int   &numberOfFD,    // Номер ФД, для которого требуется получить ТЛВ
-                                  int     &lenTotal,    // Длина полученного ТЛВ пакета
-                                  int     &docType)     // Тип документа
+// 	я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜ я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜ я┐╜я┐╜ я┐╜ я┐╜я┐╜щей я┐╜я┐╜я┐╜я┐╜я┐╜ я┐╜я┐╜я┐╜-я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜ я┐╜я┐╜слея┐╜я┐╜я┐╜я┐╜ (я┐╜я┐╜я┐╜ я┐╜я┐╜слея┐╜я┐╜я┐╜щей я┐╜я┐╜я┐╜я┐╜узкя┐╜)
+int libGetDocSTLV         ( const int   &numberOfFD,    // я┐╜я┐╜я┐╜я┐╜я┐╜ я┐╜я┐╜, я┐╜я┐╜я┐╜ я┐╜я┐╜я┐╜я┐╜рогя┐╜ я┐╜ребя┐╜я┐╜я┐╜я┐╜я┐╜ я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜ я┐╜я┐╜я┐╜
+                                  int     &lenTotal,    // я┐╜я┐╜я┐╜я┐╜я┐╜ я┐╜я┐╜я┐╜я┐╜ченя┐╜я┐╜я┐╜я┐╜ я┐╜я┐╜я┐╜ я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜
+                                  int     &docType)     // я┐╜я┐╜я┐╜ я┐╜я┐╜я┐╜умея┐╜я┐╜я┐╜
 {
     int res = 0;
 
     //---------------------------
-    // 1 Получаем по номеру ФД аттрибуты ТЛВ структуры
+    // 1 я┐╜я┐╜я┐╜я┐╜чаея┐╜ я┐╜я┐╜ я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜ я┐╜я┐╜ я┐╜я┐╜я┐╜рибя┐╜я┐╜я┐╜ я┐╜я┐╜я┐╜ я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜
     pirit_io.makeFirstPartPacketToSend(PIRIT_GET_INFO_FROM_FN);
     pirit_io.addByte(EXCHANGE_FN_SELECT_TLV_DOC);
     pirit_io.addByte(numberOfFD);
@@ -3427,7 +3427,7 @@ int libGetDocSTLV         ( const int   &numberOfFD,    // Номер ФД, для которог
         printf("\nlibGetDocSTLV: \n\t  Command RES =  %d\n",      res);
         printf("libGetDocSTLV  : \n\t Doc Type = %d, len of TLV struct = %d\n", docType, lenTotal);
     }
-    // Обнуляемся в случае ошибки
+    // я┐╜я┐╜я┐╜я┐╜я┐╜яемя┐╜я┐╜ я┐╜ я┐╜я┐╜я┐╜чае я┐╜шибя┐╜я┐╜
     if(res != 0)
     {
         lenTotal = 0;
@@ -3436,13 +3436,13 @@ int libGetDocSTLV         ( const int   &numberOfFD,    // Номер ФД, для которог
 }
 
 //===================================================================================
-// 	Запрос данных последней регистрации/перерегистрации
+// 	я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜ я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜ я┐╜я┐╜слея┐╜я┐╜я┐╜я┐╜ регя┐╜я┐╜я┐╜я┐╜я┐╜ции/я┐╜я┐╜я┐╜я┐╜регя┐╜я┐╜я┐╜я┐╜я┐╜ции
 int libGetLastRegData( uint32_t& fd, uint32_t& fpd )
 {
     int res = 0;
     constexpr int emptyByte{0};
     //---------------------------
-    // 1 Получаем по номеру ФД аттрибуты ТЛВ структуры
+    // 1 я┐╜я┐╜я┐╜я┐╜чаея┐╜ я┐╜я┐╜ я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜ я┐╜я┐╜ я┐╜я┐╜я┐╜рибя┐╜я┐╜я┐╜ я┐╜я┐╜я┐╜ я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜
     pirit_io.makeFirstPartPacketToSend(PIRIT_GET_INFO_FROM_FN);
     pirit_io.addByte(EXCHANGE_FN_LAST_REG_DATA);
     pirit_io.addByte(emptyByte);
@@ -3463,7 +3463,7 @@ int libGetLastRegData( uint32_t& fd, uint32_t& fpd )
         printf("%s:: fd  = %u",__func__,    fd);
         printf("%s:: fpd = %u",__func__, fpd);
     }
-    // Обнуляемся в случае ошибки
+    // я┐╜я┐╜я┐╜я┐╜я┐╜яемя┐╜я┐╜ я┐╜ я┐╜я┐╜я┐╜чае я┐╜шибя┐╜я┐╜
     if(res != 0)
     {
         printf("%s:: ERROR!  res = %d",__func__,    res);
@@ -3471,13 +3471,13 @@ int libGetLastRegData( uint32_t& fd, uint32_t& fpd )
     return res;
 }
 //===================================================================================
-// 	Запрос номера отчета о регистрации/перерегистрации + Возвращается тип регистрации: 1- регистрация, 11-перерегистраци (для последующей выгрузки)
-int libGetRegSTLV         ( PIRIT_REG_DOC_TYPE &regType )      // Тип документа 1- reg, 11 - rereg
+// 	я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜ я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜ я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜ я┐╜ регя┐╜я┐╜я┐╜я┐╜я┐╜ции/я┐╜я┐╜я┐╜я┐╜регя┐╜я┐╜я┐╜я┐╜я┐╜ции + я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜щаея┐╜я┐╜я┐╜ тип регя┐╜я┐╜я┐╜я┐╜я┐╜ции: 1- регя┐╜я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜, 11-я┐╜я┐╜я┐╜я┐╜регя┐╜я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜ (я┐╜я┐╜я┐╜ я┐╜я┐╜слея┐╜я┐╜я┐╜щей я┐╜я┐╜я┐╜я┐╜узкя┐╜)
+int libGetRegSTLV         ( PIRIT_REG_DOC_TYPE &regType )      // я┐╜я┐╜я┐╜ я┐╜я┐╜я┐╜умея┐╜я┐╜я┐╜ 1- reg, 11 - rereg
 {
     int res = 0;
     constexpr int emptyByte{0};
     //---------------------------
-    // 1 Получаем по номеру ФД аттрибуты ТЛВ структуры
+    // 1 я┐╜я┐╜я┐╜я┐╜чаея┐╜ я┐╜я┐╜ я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜ я┐╜я┐╜ я┐╜я┐╜я┐╜рибя┐╜я┐╜я┐╜ я┐╜я┐╜я┐╜ я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜
     pirit_io.makeFirstPartPacketToSend(PIRIT_GET_INFO_FROM_FN);
     pirit_io.addByte(EXCHANGE_FN_SELECT_TLV_REG);
     pirit_io.addByte(emptyByte);
@@ -3497,7 +3497,7 @@ int libGetRegSTLV         ( PIRIT_REG_DOC_TYPE &regType )      // Тип документа 
         printf("\nlibGetRegSTLV: \n\t  Command RES =  %d\n",      res);
         printf("libGetRegSTLV  : \n\t registration type = %d\n", regType);
     }
-    // Обнуляемся в случае ошибки
+    // я┐╜я┐╜я┐╜я┐╜я┐╜яемя┐╜я┐╜ я┐╜ я┐╜я┐╜я┐╜чае я┐╜шибя┐╜я┐╜
     if(res != 0)
     {
         regType = PIRIT_REG_DOC_TYPE::PIRIT_REG_DOC_TYPE_UNDEFINED;
@@ -3505,19 +3505,19 @@ int libGetRegSTLV         ( PIRIT_REG_DOC_TYPE &regType )      // Тип документа 
     return res;
 }
 //===================================================================================
-// 	Запрос документа из архива по номеру
-int libGetFnDocBin(  int        docNum,   // Номер документа
-                     char       **data,   // Тело  документа
-                     int      &dataLen,   // Длина документа
-                     bool     &isCheck,   // Это квитанция( подтверждён в ОФД )
-                     int      &docType)   // Тип выгружаемого документа
+// 	я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜ я┐╜я┐╜я┐╜умея┐╜я┐╜я┐╜ я┐╜я┐╜ я┐╜я┐╜хивя┐╜ я┐╜я┐╜ я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜
+int libGetFnDocBin(  int        docNum,   // я┐╜я┐╜я┐╜я┐╜я┐╜ я┐╜я┐╜я┐╜умея┐╜я┐╜я┐╜
+                     char       **data,   // я┐╜я┐╜я┐╜я┐╜  я┐╜я┐╜я┐╜умея┐╜я┐╜я┐╜
+                     int      &dataLen,   // я┐╜я┐╜я┐╜я┐╜я┐╜ я┐╜я┐╜я┐╜умея┐╜я┐╜я┐╜
+                     bool     &isCheck,   // я┐╜я┐╜я┐╜ я┐╜я┐╜я┐╜таня┐╜я┐╜я┐╜( я┐╜я┐╜я┐╜тверждя┐╜я┐╜ я┐╜ я┐╜я┐╜я┐╜ )
+                     int      &docType)   // я┐╜я┐╜я┐╜ я┐╜я┐╜я┐╜я┐╜ужая┐╜я┐╜я┐╜я┐╜я┐╜ я┐╜я┐╜я┐╜умея┐╜я┐╜я┐╜
 {
     int res = 0;
     //---------------------------
-    // 3 Читаем сам ТЛВ массив
+    // 3 я┐╜я┐╜таея┐╜ сам я┐╜я┐╜я┐╜ я┐╜я┐╜я┐╜сив
     pirit_io.makeFirstPartPacketToSend(PIRIT_GET_INFO_FROM_FN);
-    pirit_io.addByte(EXCHANGE_FN_DOC_FROM_ARC); // Чтоб сеньору в протокол не лезть, а то непаняяятна
-    pirit_io.addByte(docNum);                           // номер документа
+    pirit_io.addByte(EXCHANGE_FN_DOC_FROM_ARC); // я┐╜тоб сеня┐╜я┐╜я┐╜я┐╜ я┐╜ я┐╜я┐╜я┐╜токя┐╜я┐╜ я┐╜я┐╜ я┐╜я┐╜я┐╜я┐╜я┐╜, я┐╜ я┐╜я┐╜ я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜тна
+    pirit_io.addByte(docNum);                           // я┐╜я┐╜я┐╜я┐╜я┐╜ я┐╜я┐╜я┐╜умея┐╜я┐╜я┐╜
     pirit_io.makeEndPartPacket();
     res = pirit_io.connectSock(); if( res != 0 ) return res;
     res = pirit_io.sendData();
@@ -3558,16 +3558,16 @@ int libGetFnDocBin(  int        docNum,   // Номер документа
 }
 
 //===================================================================================
-// 	Запрос документа из архива в формате TLV, до ошибки !! 48h !!, ПОСЛЕ КОМАНДЫ (78 - 15, libGetRegistrSTLVProps!!!!)
-int libGetRegistrTLV( char             *tlv,   // Тело ТЛВ структуры             (компоненты общей СТЛВ)
-                      int           &lenTLV,   // Длина полученной ТЛВ структуры (компоненты общей СТЛВ)
+// 	я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜ я┐╜я┐╜я┐╜умея┐╜я┐╜я┐╜ я┐╜я┐╜ я┐╜я┐╜хивя┐╜ я┐╜ я┐╜я┐╜рмая┐╜я┐╜ TLV, я┐╜я┐╜ я┐╜шибя┐╜я┐╜ !! 48h !!, я┐╜я┐╜я┐╜я┐╜я┐╜ я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜ (78 - 15, libGetRegistrSTLVProps!!!!)
+int libGetRegistrTLV( char             *tlv,   // я┐╜я┐╜я┐╜я┐╜ я┐╜я┐╜я┐╜ я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜             (я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜ я┐╜я┐╜щей я┐╜я┐╜я┐╜я┐╜)
+                      int           &lenTLV,   // я┐╜я┐╜я┐╜я┐╜я┐╜ я┐╜я┐╜я┐╜я┐╜ченя┐╜я┐╜я┐╜ я┐╜я┐╜я┐╜ я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜ (я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜ я┐╜я┐╜щей я┐╜я┐╜я┐╜я┐╜)
                       const bool   isRegTLV )  // true - send command 78/20, false - 78/16
 {
     int res = 0;
     //---------------------------
-    // 3 Читаем сам ТЛВ массив
+    // 3 я┐╜я┐╜таея┐╜ сам я┐╜я┐╜я┐╜ я┐╜я┐╜я┐╜сив
     pirit_io.makeFirstPartPacketToSend(PIRIT_GET_INFO_FROM_FN);
-    pirit_io.addByte( (isRegTLV ? EXCHANGE_FN_GET_TLV_REG : EXCHANGE_FN_GET_TLV_DOC) );   // Запрос данных TLV
+    pirit_io.addByte( (isRegTLV ? EXCHANGE_FN_GET_TLV_REG : EXCHANGE_FN_GET_TLV_DOC) );   // я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜ я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜ TLV
     pirit_io.makeEndPartPacket();
     res = pirit_io.connectSock(); if( res != 0 ) return res;
     res = pirit_io.sendData();
@@ -3590,15 +3590,15 @@ int libGetRegistrTLV( char             *tlv,   // Тело ТЛВ структуры            
 }
 
 //===================================================================================
-// 	Запрос документа из архива в формате TLV, до ошибки !! 48h !!, ПОСЛЕ КОМАНДЫ (78 - 15, libGetRegistrSTLVProps!!!!)
-int libGetLastRecieptData(  int                &type,   // тип чека (для аннулиров. = 0)
-                            string       &cur_op_cnt,   // текущий операц. счетчик
-                            int             &rec_num,   // номер чека
-                            int             &doc_num,   // номер документа
-                            double              &sum,   // сумма чека
-                            double         &discount,   // сумма скидки
-                            string              &fpd,   // строка ФП (фиск. признак)
-                            int                  &fd )  // номер ФД
+// 	я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜ я┐╜я┐╜я┐╜умея┐╜я┐╜я┐╜ я┐╜я┐╜ я┐╜я┐╜хивя┐╜ я┐╜ я┐╜я┐╜рмая┐╜я┐╜ TLV, я┐╜я┐╜ я┐╜шибя┐╜я┐╜ !! 48h !!, я┐╜я┐╜я┐╜я┐╜я┐╜ я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜ (78 - 15, libGetRegistrSTLVProps!!!!)
+int libGetLastRecieptData(  int                &type,   // тип чекя┐╜ (я┐╜я┐╜я┐╜ я┐╜я┐╜я┐╜улиров. = 0)
+                            string       &cur_op_cnt,   // текя┐╜щий я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜. я┐╜я┐╜я┐╜я┐╜чик
+                            int             &rec_num,   // я┐╜я┐╜я┐╜я┐╜я┐╜ чекя┐╜
+                            int             &doc_num,   // я┐╜я┐╜я┐╜я┐╜я┐╜ я┐╜я┐╜я┐╜умея┐╜я┐╜я┐╜
+                            double              &sum,   // я┐╜уммя┐╜ чекя┐╜
+                            double         &discount,   // я┐╜уммя┐╜ ския┐╜я┐╜я┐╜
+                            string              &fpd,   // я┐╜я┐╜рокя┐╜ я┐╜я┐╜ (я┐╜я┐╜я┐╜я┐╜. я┐╜ризя┐╜я┐╜я┐╜)
+                            int                  &fd )  // я┐╜я┐╜я┐╜я┐╜я┐╜ я┐╜я┐╜
 {
     int     res = 0;
     char tmpStr[128];
@@ -3614,7 +3614,7 @@ int libGetLastRecieptData(  int                &type,   // тип чека (для аннулир
     }
     pirit_io.disconnectSock();
     //----
-    // Чистим
+    // я┐╜я┐╜я┐╜тим
     type = 0;
     cur_op_cnt.clear();
     rec_num = 0;
@@ -3737,7 +3737,7 @@ int libGetStatusOFD(int &result)
     if ( pirit_io.DEBUGLEVEL == DEBUG_ON )
     {
         printf("libGetStatusOFD: \n\t  Command RES =  %d\n",    err);
-        printf("libGetStatusOFD: \n\t  Статус ОФД  = '%d'\n",  result);
+        printf("libGetStatusOFD: \n\t  я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜ я┐╜я┐╜я┐╜  = '%d'\n",  result);
     }
 
     return err;
@@ -3745,7 +3745,7 @@ int libGetStatusOFD(int &result)
 
 
 //===================================================================================
-// Аварийное закрытие ФН (0xA4)
+// я┐╜я┐╜я┐╜рийя┐╜я┐╜я┐╜ я┐╜я┐╜я┐╜я┐╜я┐╜тие я┐╜я┐╜ (0xA4)
 int libEmegencyCloseFN()
 {
     int err;
@@ -3773,14 +3773,14 @@ int libEmegencyCloseFN()
 
 
 //=======================================================================================================
-// Чтение значения из таблицы настроек КСА
-int libGetSettingsKSA_By(int   number,          // Номер поля
-                         int    index,          // Индекс(для массива)
-                         char   *data)          // Значение
+// я┐╜теня┐╜я┐╜ я┐╜я┐╜я┐╜ченя┐╜я┐╜ я┐╜я┐╜ табя┐╜я┐╜я┐╜я┐╜ я┐╜я┐╜я┐╜я┐╜роея┐╜ я┐╜я┐╜я┐╜
+int libGetSettingsKSA_By(int   number,          // я┐╜я┐╜я┐╜я┐╜я┐╜ я┐╜я┐╜я┐╜я┐╜
+                         int    index,          // я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜(я┐╜я┐╜я┐╜ я┐╜я┐╜я┐╜сивя┐╜)
+                         char   *data)          // я┐╜я┐╜я┐╜ченя┐╜я┐╜
 {
     if(pirit_io.DEBUGLEVEL == DEBUG_ON)
     {
-        printf("libGetSettingsKSA_By: \n\t  Чтение настройки: № = '%d' Индекс ='%d'\n",  number, index);
+        printf("libGetSettingsKSA_By: \n\t  я┐╜теня┐╜я┐╜ я┐╜я┐╜я┐╜я┐╜ройя┐╜я┐╜: я┐╜ = '%d' я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜ ='%d'\n",  number, index);
     }
 
     int err = 0;
@@ -3801,21 +3801,21 @@ int libGetSettingsKSA_By(int   number,          // Номер поля
 
     if(pirit_io.DEBUGLEVEL == DEBUG_ON)
     {
-        printf("libGetSettingsKSA_By: \n\t  Результат =  '%d'  Data = '%s'\n", res, data);
+        printf("libGetSettingsKSA_By: \n\t  я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜ =  '%d'  Data = '%s'\n", res, data);
     }
     return err;
 }
 
 
 //=======================================================================================================
-// Запись значения в  таблицу настроек КСА
-int libSetSettingsKSA_By(int   number,         // Номер поля
-                         int    index,         // Индекс(для массива)
-                         char   *data)         // Значение
+// я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜ я┐╜я┐╜я┐╜ченя┐╜я┐╜ я┐╜  табя┐╜я┐╜я┐╜я┐╜ я┐╜я┐╜я┐╜я┐╜роея┐╜ я┐╜я┐╜я┐╜
+int libSetSettingsKSA_By(int   number,         // я┐╜я┐╜я┐╜я┐╜я┐╜ я┐╜я┐╜я┐╜я┐╜
+                         int    index,         // я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜(я┐╜я┐╜я┐╜ я┐╜я┐╜я┐╜сивя┐╜)
+                         char   *data)         // я┐╜я┐╜я┐╜ченя┐╜я┐╜
 {
     if(pirit_io.DEBUGLEVEL == DEBUG_ON)
     {
-        printf("libSetSettingsKSA_By: \n\t  Запись настройки: № = '%d' Индекс ='%d' data = '%s'\n",  number,
+        printf("libSetSettingsKSA_By: \n\t  я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜ я┐╜я┐╜я┐╜я┐╜ройя┐╜я┐╜: я┐╜ = '%d' я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜ ='%d' data = '%s'\n",  number,
                                                                                                     index,
                                                                                                     data);
     }
@@ -3836,18 +3836,18 @@ int libSetSettingsKSA_By(int   number,         // Номер поля
 
     if(pirit_io.DEBUGLEVEL == DEBUG_ON)
     {
-        printf("libSetSettingsKSA_By: \n\t  Результат =  %d\n",      err);
+        printf("libSetSettingsKSA_By: \n\t  я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜ =  %d\n",      err);
     }
     return err;
 }
 
 //========================================================================================
-// РБ. Запрос дополнительной информации о ошибках
+// я┐╜я┐╜. я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜ я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜тельноя┐╜ я┐╜я┐╜я┐╜я┐╜рмации я┐╜ я┐╜шибя┐╜я┐╜я┐╜
 int libGetInfoErrorsExt_By(int *errs)
 {
     if(pirit_io.DEBUGLEVEL == DEBUG_ON)
     {
-        printf("libGetInfoErrorsExt_By:\t   Запрос дополнительной информации о ошибках..." );
+        printf("libGetInfoErrorsExt_By:\t   я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜ я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜тельноя┐╜ я┐╜я┐╜я┐╜я┐╜рмации я┐╜ я┐╜шибя┐╜я┐╜я┐╜..." );
     }
     int err = 0;
     pirit_io.makeFirstPartPacketToSend(0x06);
@@ -3865,14 +3865,14 @@ int libGetInfoErrorsExt_By(int *errs)
 
     if(pirit_io.DEBUGLEVEL == DEBUG_ON)
     {
-        printf("libGetInfoErrorsExt_By: \t  Результат =  %d\n",      res);
+        printf("libGetInfoErrorsExt_By: \t  я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜ =  %d\n",      res);
     }
     return res;
 }
 
 
 //========================================================================================
-// РБ. Запрос флагов статуса КСА
+// я┐╜я┐╜. я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜ флая┐╜я┐╜я┐╜ я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜ я┐╜я┐╜я┐╜
 int libGetStatusFlags_By  ( int *statusFatal, int *statusCurrent, int *statusDoc, int *statusSKNO )
 {
     if(statusFatal == NULL || statusCurrent == NULL || statusDoc == NULL || statusSKNO == NULL)
@@ -3898,7 +3898,7 @@ int libGetStatusFlags_By  ( int *statusFatal, int *statusCurrent, int *statusDoc
 
 
 //======================================================================================
-//============ КОМАДЫ ДЛЯ ПЕЧАТИ НЕФИСКАЛЬНЫХ ДОКУМЕНТОВ В ПАКЕТНОМ РЕЖИМЕ =============
+//============ я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜ я┐╜я┐╜я┐╜ я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜ я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜ я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜ я┐╜ я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜ я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜ =============
 //======================================================================================
 
 int libOpeNotFiscalDoc(const bool header)
@@ -4093,7 +4093,7 @@ int getIntServiceInfoSKNO(uint8_t number, uint32_t index, int &data)
     return err;
 }
 
-//==========================  КОМАНДЫ ДРИМКАС-КЛЮЧ =====================================
+//==========================  я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜ я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜-я┐╜я┐╜я┐╜я┐╜ =====================================
 int libDreamkasKeySet(string &strKey)
 {
     pirit_io.makeFirstPartPacketToSend( PIRIT_DREAMKAS_KEY );
@@ -4235,8 +4235,8 @@ int libDreamkasKeyGetInfoList(vector<DreamkasKey> &keyInfoList)
     {
         if ( libDreamkasKeyParseInfoList(keyInfoList, infoStr) < 0 )
         {
-            err = 0x03; // Некорректный формат/пар-р команды
-            printf("%s: Ошибка парса списка активированных услуг!!!\n", __PRETTY_FUNCTION__);
+            err = 0x03; // я┐╜я┐╜я┐╜я┐╜я┐╜рекя┐╜я┐╜я┐╜я┐╜ я┐╜я┐╜рмая┐╜/я┐╜я┐╜я┐╜-я┐╜ я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜
+            printf("%s: я┐╜шибя┐╜я┐╜ я┐╜я┐╜я┐╜я┐╜я┐╜ списка я┐╜я┐╜тивя┐╜ровя┐╜я┐╜я┐╜я┐╜я┐╜ я┐╜я┐╜я┐╜я┐╜я┐╜!!!\n", __PRETTY_FUNCTION__);
         }
     }
 
@@ -4256,7 +4256,7 @@ int libDreamkasKeyParseInfoList(vector<DreamkasKey> &keyInfoList, const string &
 
     if ( valInfoList.size() < 2 )
     {
-        printf("%s: Ошибка парса списка активированных услуг (мало параметров)!!!\n", __PRETTY_FUNCTION__);
+        printf("%s: я┐╜шибя┐╜я┐╜ я┐╜я┐╜я┐╜я┐╜я┐╜ списка я┐╜я┐╜тивя┐╜ровя┐╜я┐╜я┐╜я┐╜я┐╜ я┐╜я┐╜я┐╜я┐╜я┐╜ (я┐╜я┐╜я┐╜я┐╜ я┐╜я┐╜рамя┐╜я┐╜ров)!!!\n", __PRETTY_FUNCTION__);
         return -1;
     }
 
@@ -4270,7 +4270,7 @@ int libDreamkasKeyParseInfoList(vector<DreamkasKey> &keyInfoList, const string &
 
     if ( (valInfoList.size() % INFO_LIST_SIZE) != 0 )
     {
-        printf("%s: Ошибка парса списка активированных услуг!!!\n", __PRETTY_FUNCTION__);
+        printf("%s: я┐╜шибя┐╜я┐╜ я┐╜я┐╜я┐╜я┐╜я┐╜ списка я┐╜я┐╜тивя┐╜ровя┐╜я┐╜я┐╜я┐╜я┐╜ я┐╜я┐╜я┐╜я┐╜я┐╜!!!\n", __PRETTY_FUNCTION__);
         return -1;
     }
 
@@ -4388,6 +4388,112 @@ int libSetNVR(const SetNVRcmd &setNVRcmd)
     {
         err = pirit_io.readData();
     }
+    pirit_io.disconnectSock();
+
+    return err;
+}
+
+int libSetWiFiModule(WIFI_MODULE_PARAM wifiModuleParam, const WiFiModuleData &wiFiModuleData)
+{
+    constexpr unsigned int maxHostLen = 32;
+    constexpr unsigned int maxPassLen = 64;
+    pirit_io.makeFirstPartPacketToSend(PIRIT_SET_WIFI_NETWORK);
+    pirit_io.addInt(wifiModuleParam);
+    int err {-1};
+
+    switch (wifiModuleParam)
+    {
+        case WIFI_MODULE_PARAM::WIFI_MODULE_SET_HOME_NETWORK:
+        {
+            pirit_io.addString((wiFiModuleData.SSID.length() > maxHostLen) ? wiFiModuleData.SSID.substr(0, maxHostLen - 1) : wiFiModuleData.SSID);
+            pirit_io.addString((wiFiModuleData.pass.length() > maxPassLen) ? wiFiModuleData.pass.substr(0, maxPassLen - 1) : wiFiModuleData.pass);
+            break;
+        }
+        case WIFI_MODULE_PARAM::WIFI_MODULE_SET_LOGS:
+        {
+            pirit_io.addString((wiFiModuleData.logIp.length() > maxHostLen) ? wiFiModuleData.logIp.substr(0, maxHostLen - 1) : wiFiModuleData.logIp);
+            pirit_io.addString((wiFiModuleData.lopPort.length() > maxPassLen) ? wiFiModuleData.lopPort.substr(0, maxPassLen - 1) : wiFiModuleData.lopPort);
+            break;
+        }
+        default: err = -1; break;
+    }
+
+    pirit_io.makeEndPartPacket();
+
+    err = pirit_io.connectSock();
+
+    if (err != 0)
+    {
+        return err;
+    }
+
+    err = pirit_io.sendData();
+    pirit_io.disconnectSock();
+
+    return err;
+}
+
+int libGetWiFiModuleNetwork(WIFI_MODULE_NETWORK_PARAM wifiModuleNetworkParam, WiFiModuleNetwork &wifiModuleNetwork)
+{
+    pirit_io.makeFirstPartPacketToSend(PIRIT_GET_WIFI_NETWORK);
+    pirit_io.addInt(wifiModuleNetworkParam);
+    pirit_io.makeEndPartPacket();
+
+    int err = pirit_io.connectSock();
+
+    if (err != 0)
+    {
+        return err;
+    }
+
+    err = pirit_io.sendData();
+
+    if (err == 0)
+    {
+        err = pirit_io.readData();
+        if (err == 0)
+        {
+            wifiModuleNetwork.clear();
+            constexpr uint32_t maxValueLen {32};
+            char tmp[maxValueLen] = {0x00};
+            err = pirit_io.parseAnswerN<char>(PIRIT_PARAM_0, *tmp);
+
+            if (err == 0)
+            {
+                switch (wifiModuleNetworkParam)
+                {
+                    case WIFI_MODULE_NETWORK_PARAM::WIFI_MODULE_GET_HOME_NETWORK:
+                    {
+                        wifiModuleNetwork.host = std::string(tmp);
+                        memset(tmp, 0x00, maxValueLen);
+                        err = pirit_io.parseAnswerN<char>(PIRIT_PARAM_1, *tmp);
+
+                        if (err == 0)
+                        {
+                            wifiModuleNetwork.ip = std::string(tmp);
+                        }
+                        break;
+                    }
+                    case WIFI_MODULE_NETWORK_PARAM::WIFI_MODULE_GET_LOCAL_NETWORK:
+                    {
+                        wifiModuleNetwork.localhost = std::string(tmp);
+                        memset(tmp, 0x00, maxValueLen);
+                        err = pirit_io.parseAnswerN<char>(PIRIT_PARAM_1, *tmp);
+
+                        if (err == 0)
+                        {
+                            wifiModuleNetwork.localIp = std::string(tmp);
+                        }
+                        break;
+                    }
+                    case WIFI_MODULE_NETWORK_PARAM::WIFI_MODULE_GET_MAC_ADDRESS: wifiModuleNetwork.mac = std::string(tmp); break;
+                    case WIFI_MODULE_NETWORK_PARAM::WIFI_MODULE_GET_DNS: wifiModuleNetwork.dns = std::string(tmp); break;
+                    default: err = -1; break;
+                }
+            }
+        }
+    }
+
     pirit_io.disconnectSock();
 
     return err;

@@ -83,9 +83,13 @@ enum FB_CRITICAL_LEVEL
 
 enum PIRIT_LOCAL_LICENSE_OPTIONS_MASK
 {
-    OPTION_1200     = 0x01,
-    OPTION_FFD11    = 0x02,
-    OPTION_SELL_SIZ = 0x04
+    OPTION_1200 = 0x01,
+    OPTION_FFD11 = 0x02,
+    OPTION_SELL_SIZ = 0x04,
+    OPTION_SELL_ALCOHOL = 0x08,
+    OPTION_TOBACCO_MRC = 0x10,
+    OPTION_SELL_TABLE_50 = 0x20,
+    OPTION_SCALABLE_GOODS = 0x40
 };
 
 //==============================================================================================
@@ -1010,7 +1014,71 @@ struct SetNVRcmd
  * @return результат выполнения
  */
 int libSetNVR(const SetNVRcmd &setNVRcmd);
+/**
+ * @brief The WiFiModuleData struct данные настроек WiFi модуля VIKI PRINT
+ */
+struct WiFiModuleData
+{
+    std::string SSID;       // наименование домашней сети
+    std::string pass;       // пароль домашней сети
+    std::string logIp;      // ip-адрес отправки логов
+    std::string lopPort;    // порт отправки логов
+};
+/**
+ * @brief The WIFI_MODULE_PARAM enum настройки WiFi модуля VIKI PRINT
+ */
+enum WIFI_MODULE_PARAM : int
+{
+    WIFI_MODULE_SET_HOME_NETWORK = 0,   // установка параметров домашней сети
+    WIFI_MODULE_SET_NETWORK_PARAM,      // установка параметров локальной сети
+    WIFI_MODULE_SET_LOGS                // установка параметров логирования
+};
+/**
+ * @brief libSetWiFiModule установка параметров WiFi модуля VIKI PRINT
+ * @param wifiModuleParam тип настройки WiFi модуля VIKI PRINT
+ * @param WiFiModuleData данные настроек WiFi модуля VIKI PRINT
+ * @return результат выполнения
+ */
+int libSetWiFiModule(WIFI_MODULE_PARAM wifiModuleParam, const WiFiModuleData &wiFiModuleData);
+/**
+ * @brief The WiFiModuleNetwork struct данные WiFi модуля VIKI PRINT
+ */
+struct WiFiModuleNetwork
+{
+    std::string host;       // имя сети
+    std::string ip;         // ip-адрес
+    std::string localhost;  // имя локальной сети
+    std::string localIp;    // ip-адрес локальной сети
+    std::string mac;        // MAC-адрес
+    std::string dns;        // DNS
 
+    void clear()
+    {
+        host.clear();
+        ip.clear();
+        localhost.clear();
+        localIp.clear();
+        mac.clear();
+        dns.clear();
+    }
+};
+/**
+ * @brief The WIFI_MODULE_NETWORK_PARAM enum тип запроса параметров сети WiFi модуля VIKI PRINT
+ */
+enum WIFI_MODULE_NETWORK_PARAM : int
+{
+    WIFI_MODULE_GET_HOME_NETWORK = 0,   // чтение параметров домашней сети
+    WIFI_MODULE_GET_LOCAL_NETWORK,      // чтение параметров локальной сети
+    WIFI_MODULE_GET_MAC_ADDRESS,        // чтение MAC-адреса
+    WIFI_MODULE_GET_DNS                 // чтение DNS
+};
+/**
+ * @brief libGetWiFiModuleNetwork чтение настроек сети WiFi модуля VIKI PRINT
+ * @param wifiModuleNetworkParam тип запроса параметров сети WiFi модуля VIKI PRINT
+ * @param wifiModuleNetwork данные WiFi модуля VIKI PRINT
+ * @return результат выполнения
+ */
+int libGetWiFiModuleNetwork(WIFI_MODULE_NETWORK_PARAM wifiModuleNetworkParam, WiFiModuleNetwork &wifiModuleNetwork);
 
 int   saveLogoToFile       (char              *fileName);   // Скачать с БИОСа логотипчик
 int   libLoadLogo          (int                    size,
