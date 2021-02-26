@@ -832,6 +832,8 @@ enum PIRIT_COMMAND
     PIRIT_OPEN_DRAWER               = 0x80,     //  Открыть денежный ящик
     PIRIT_GET_DRAWER_STATUS         = 0x81,     //  Получить статус денежного ящика
     PIRIT_BEEP                      = 0x82,     //  Подать звуковой сигнал
+    PIRIT_SET_WIFI_NETWORK          = 0x85,     //  Установить сеть WiFi модуля
+    PIRIT_GET_WIFI_NETWORK          = 0x86,     //  Чтение сети WiFi модуля
     PIRIT_AUTHORIZATION             = 0x90,     //  Авторизация ККТ
     PIRIT_READ_MEMORY_BLOCK         = 0x91,     //  Чтение блока памяти ККТ
     PIRIT_SET_SPEED                 = 0x93,     //  Установить скорость обмена

@@ -4392,3 +4392,109 @@ int libSetNVR(const SetNVRcmd &setNVRcmd)
 
     return err;
 }
+
+int libSetWiFiModule(WIFI_MODULE_PARAM wifiModuleParam, const WiFiModuleData &wiFiModuleData)
+{
+    constexpr unsigned int maxHostLen = 32;
+    constexpr unsigned int maxPassLen = 64;
+    pirit_io.makeFirstPartPacketToSend(PIRIT_SET_WIFI_NETWORK);
+    pirit_io.addInt(wifiModuleParam);
+    int err {-1};
+
+    switch (wifiModuleParam)
+    {
+        case WIFI_MODULE_PARAM::WIFI_MODULE_SET_HOME_NETWORK:
+        {
+            pirit_io.addString((wiFiModuleData.SSID.length() > maxHostLen) ? wiFiModuleData.SSID.substr(0, maxHostLen - 1) : wiFiModuleData.SSID);
+            pirit_io.addString((wiFiModuleData.pass.length() > maxPassLen) ? wiFiModuleData.pass.substr(0, maxPassLen - 1) : wiFiModuleData.pass);
+            break;
+        }
+        case WIFI_MODULE_PARAM::WIFI_MODULE_SET_LOGS:
+        {
+            pirit_io.addString((wiFiModuleData.logIp.length() > maxHostLen) ? wiFiModuleData.logIp.substr(0, maxHostLen - 1) : wiFiModuleData.logIp);
+            pirit_io.addString((wiFiModuleData.lopPort.length() > maxPassLen) ? wiFiModuleData.lopPort.substr(0, maxPassLen - 1) : wiFiModuleData.lopPort);
+            break;
+        }
+        default: err = -1; break;
+    }
+
+    pirit_io.makeEndPartPacket();
+
+    err = pirit_io.connectSock();
+
+    if (err != 0)
+    {
+        return err;
+    }
+
+    err = pirit_io.sendData();
+    pirit_io.disconnectSock();
+
+    return err;
+}
+
+int libGetWiFiModuleNetwork(WIFI_MODULE_NETWORK_PARAM wifiModuleNetworkParam, WiFiModuleNetwork &wifiModuleNetwork)
+{
+    pirit_io.makeFirstPartPacketToSend(PIRIT_GET_WIFI_NETWORK);
+    pirit_io.addInt(wifiModuleNetworkParam);
+    pirit_io.makeEndPartPacket();
+
+    int err = pirit_io.connectSock();
+
+    if (err != 0)
+    {
+        return err;
+    }
+
+    err = pirit_io.sendData();
+
+    if (err == 0)
+    {
+        err = pirit_io.readData();
+        if (err == 0)
+        {
+            wifiModuleNetwork.clear();
+            constexpr uint32_t maxValueLen {32};
+            char tmp[maxValueLen] = {0x00};
+            err = pirit_io.parseAnswerN<char>(PIRIT_PARAM_0, *tmp);
+
+            if (err == 0)
+            {
+                switch (wifiModuleNetworkParam)
+                {
+                    case WIFI_MODULE_NETWORK_PARAM::WIFI_MODULE_GET_HOME_NETWORK:
+                    {
+                        wifiModuleNetwork.host = std::string(tmp);
+                        memset(tmp, 0x00, maxValueLen);
+                        err = pirit_io.parseAnswerN<char>(PIRIT_PARAM_1, *tmp);
+
+                        if (err == 0)
+                        {
+                            wifiModuleNetwork.ip = std::string(tmp);
+                        }
+                        break;
+                    }
+                    case WIFI_MODULE_NETWORK_PARAM::WIFI_MODULE_GET_LOCAL_NETWORK:
+                    {
+                        wifiModuleNetwork.localhost = std::string(tmp);
+                        memset(tmp, 0x00, maxValueLen);
+                        err = pirit_io.parseAnswerN<char>(PIRIT_PARAM_1, *tmp);
+
+                        if (err == 0)
+                        {
+                            wifiModuleNetwork.localIp = std::string(tmp);
+                        }
+                        break;
+                    }
+                    case WIFI_MODULE_NETWORK_PARAM::WIFI_MODULE_GET_MAC_ADDRESS: wifiModuleNetwork.mac = std::string(tmp); break;
+                    case WIFI_MODULE_NETWORK_PARAM::WIFI_MODULE_GET_DNS: wifiModuleNetwork.dns = std::string(tmp); break;
+                    default: err = -1; break;
+                }
+            }
+        }
+    }
+
+    pirit_io.disconnectSock();
+
+    return err;
+}
