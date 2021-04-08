@@ -182,7 +182,7 @@ public:
     int connectSock();
     int disconnectSock();
     int sendData();
-    int readData();
+    int readData(int TIMEOUT = 120000);
     int readBinaryData();
     void getMData(MData *mData);
     int scrollPaper();

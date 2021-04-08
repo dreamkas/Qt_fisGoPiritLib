@@ -4498,3 +4498,67 @@ int libGetWiFiModuleNetwork(WIFI_MODULE_NETWORK_PARAM wifiModuleNetworkParam, Wi
 
     return err;
 }
+
+int libGetFiscalVersion(FISCAL_DEVICE device, string &version)
+{
+    pirit_io.makeFirstPartPacketToSend(PIRIT_KKT_INFO);
+    pirit_io.addInt(device?PIRIT_KKT_INFO_STRING_VERSION_PRINTER:PIRIT_KKT_INFO_STRING_VERSION_WIFI);
+    pirit_io.makeEndPartPacket();
+
+    int err = pirit_io.connectSock();
+
+    if (err != 0)
+    {
+        return err;
+    }
+
+    err = pirit_io.sendData();
+
+    if (err == 0)
+    {
+        err = pirit_io.readData();
+        if (err == 0)
+        {
+            version.clear();
+            char data[12];
+            memset(data, 0, sizeof(data));
+
+            err = pirit_io.parseAnswerN<char>(PIRIT_PARAM_1, *data);
+            version = string(data);
+        }
+    }
+
+    pirit_io.disconnectSock();
+
+    return err;
+}
+
+int libUpdateFiscal(FISCAL_DEVICE device,const string& url,const string& md5)
+{
+    pirit_io.makeFirstPartPacketToSend(PIRIT_UPDATE_FISCAL);
+    pirit_io.addInt(device);
+    pirit_io.addConstChar(url.c_str());
+    pirit_io.addConstChar(md5.c_str());
+    pirit_io.makeEndPartPacket();
+
+    int err = pirit_io.connectSock();
+
+    if (err != 0)
+    {
+        return err;
+    }
+
+    err = pirit_io.sendData();
+
+    if (err == 0)
+    {
+        const int TIMEOUT = 360000;
+        err = pirit_io.readData(TIMEOUT);
+
+    }
+
+    pirit_io.disconnectSock();
+
+    return err;
+}
+

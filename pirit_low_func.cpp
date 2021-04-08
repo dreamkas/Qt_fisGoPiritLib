@@ -450,7 +450,7 @@ int PIRIT_IOCLASS::parseAnswer()
 	{
 		printf("Error packet CRC(%2X) != CRC(%2X)\n", crc, crcRead);
 		return 1006;
-	}
+    }
 	//--
 	// Код Ошибки
 	bb[0] = dataToRead.data[4];
@@ -1114,9 +1114,9 @@ int PIRIT_IOCLASS::sendData()
 
 //=======================================================================
 // Здесь может быть ваш комментарий
-int PIRIT_IOCLASS::readData()
+int PIRIT_IOCLASS::readData(int TIMEOUT)
 {
-    const int TIMEOUT = 120000;
+
     const size_t MAX_PACKET_LEN = 2048;
     int res = PIRIT_LOW_LVL_ERRS::NO_ERRORS;
 

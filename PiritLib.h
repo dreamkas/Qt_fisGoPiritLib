@@ -148,6 +148,7 @@ enum FB_ERROR_CODE
     FB_ERROR_SENDING_DATA_TO_OFD = 0x12,    // Ошибка посылки данных в ОФД
 
     // Фатальные ошибки
+    FB_ERROR_FATAL_UPDATE = 0x13,           //Критическая ошибка обновления
     FB_ERROR_FATAL = 0x20,  // Фатальная ошибка ККТ. Причины возникновения данной ошибки можно уточнить в ?Статусе фатальных ошибок ККТ?
 
     // Ошибки ФН
@@ -221,6 +222,7 @@ const vector <FB_err> FB_errs_RF
                 FB_err(FB_ERROR_CONTROL_TAPE, "Ошибка контрольной ленты",                           FB_CRITICAL_LEVEL:: CL_FISCAL),
                 FB_err(FB_ERROR_SENDING_DATA_TO_OFD, "Ошибка отпр.данных в ОФД",                    FB_CRITICAL_LEVEL:: CL_FISCAL),
                 // 	Фатальные ошибки
+                FB_err(FB_ERROR_FATAL_UPDATE, "Критическая ошибка обновления. Перезагрузите ККТ", FB_CRITICAL_LEVEL:: CL_ALL),
                 FB_err(FB_ERROR_FATAL, "Фатальная ошибка ККТ", FB_CRITICAL_LEVEL:: CL_ALL),
                 // Ошибки ФН
                 FB_err(0x21, "ФН переполнен", FB_CRITICAL_LEVEL:: CL_FISCAL),
@@ -501,17 +503,19 @@ enum PIRIT_RECEIPT_INDEX
 //  Параметры для команды PIRIT_KKT_INFO
 enum PIRIT_KKT_INFO_PARAM
 {
-    PIRIT_KKT_INFO_KKT_PLANT_NUM        = 0x01,     //  Вернуть заводской номер ККТ
-    PIRIT_KKT_INFO_ID_FIRMWARE          = 0x02,     //  Вернуть идентификатор прошивки
-    PIRIT_KKT_INFO_INN                  = 0x03,     //	Вернуть ИНН
-    PIRIT_KKT_INFO_PLANT_NUM            = 0x04,     //  Вернуть регистрационный номер ККТ
-    PIRIT_KKT_INFO_DATE_TIME_LAST_FD    = 0x05,     //	Вернуть дату и время последней фискальной операции
-    PIRIT_KKT_INFO_DATE_TIME_REG        = 0x06,     //  Вернуть дату регистрации / перерегистрации
-    PIRIT_KKT_INFO_CASH_IN_DROWER       = 0x07,     //  Вернуть сумму наличных в денежном ящике
-    PIRIT_KKT_INFO_NEXT_DOC             = 0x08,     //  Вернуть номер следующего документа
-    PIRIT_KKT_INFO_FS_VALIDITY_DATE     = 0x0E,     //  Вернуть ресурс ключей ФН
-    PIRIT_KKT_INFO_DATE_TIME_OPEN_SHIFT = 0x11,     //  Вернуть дату и время открытия смены
-    PIRIT_KKT_INFO_CNO_SIGNS_AGENT      = 0x17      //  Вернуть систему налогообложения и режим работы и ФН
+    PIRIT_KKT_INFO_KKT_PLANT_NUM          = 0x01,     //  Вернуть заводской номер ККТ
+    PIRIT_KKT_INFO_ID_FIRMWARE            = 0x02,     //  Вернуть идентификатор прошивки
+    PIRIT_KKT_INFO_INN                    = 0x03,     //	Вернуть ИНН
+    PIRIT_KKT_INFO_PLANT_NUM              = 0x04,     //  Вернуть регистрационный номер ККТ
+    PIRIT_KKT_INFO_DATE_TIME_LAST_FD      = 0x05,     //	Вернуть дату и время последней фискальной операции
+    PIRIT_KKT_INFO_DATE_TIME_REG          = 0x06,     //  Вернуть дату регистрации / перерегистрации
+    PIRIT_KKT_INFO_CASH_IN_DROWER         = 0x07,     //  Вернуть сумму наличных в денежном ящике
+    PIRIT_KKT_INFO_NEXT_DOC               = 0x08,     //  Вернуть номер следующего документа
+    PIRIT_KKT_INFO_FS_VALIDITY_DATE       = 0x0E,     //  Вернуть ресурс ключей ФН
+    PIRIT_KKT_INFO_DATE_TIME_OPEN_SHIFT   = 0x11,     //  Вернуть дату и время открытия смены
+    PIRIT_KKT_INFO_CNO_SIGNS_AGENT        = 0x17,      //  Вернуть систему налогообложения и режим работы и ФН
+    PIRIT_KKT_INFO_STRING_VERSION_PRINTER = 0x46,      //  Вернуть версию прошивки принтера в виде строки
+    PIRIT_KKT_INFO_STRING_VERSION_WIFI    = 0x47       //  Вернуть версию прошивки wifi модуля в виде строки
 };
 
 //-------------------------------------------------
@@ -1072,6 +1076,16 @@ enum WIFI_MODULE_NETWORK_PARAM : int
     WIFI_MODULE_GET_MAC_ADDRESS,        // чтение MAC-адреса
     WIFI_MODULE_GET_DNS                 // чтение DNS
 };
+
+/**
+ * @brief The FISCAL_DEVICE enum тип обращаемого девайса
+ */
+enum FISCAL_DEVICE : int
+{
+    DEVICE_WIFI_MODULE = 0,   // wifi модуль
+    DEVICE_PRINTER,      // Принтер
+
+};
 /**
  * @brief libGetWiFiModuleNetwork чтение настроек сети WiFi модуля VIKI PRINT
  * @param wifiModuleNetworkParam тип запроса параметров сети WiFi модуля VIKI PRINT
@@ -1079,6 +1093,24 @@ enum WIFI_MODULE_NETWORK_PARAM : int
  * @return результат выполнения
  */
 int libGetWiFiModuleNetwork(WIFI_MODULE_NETWORK_PARAM wifiModuleNetworkParam, WiFiModuleNetwork &wifiModuleNetwork);
+
+/**
+ * @brief libGetFiscalVersion чтение версии принтера и Wifi
+ * @param device тип запроса версии
+ * @param version номер версии
+ * @return результат выполнения
+ */
+int libGetFiscalVersion(FISCAL_DEVICE device, string &version);
+
+/**
+ * @brief libUpdateFiscal обновление прошивки принтера и Wifi
+ * @param device тип запроса версии
+ * @param url адрес для скачивания прошивки
+ * @param md5 md5sum прошивки
+ * @return результат выполнения
+ */
+int libUpdateFiscal(FISCAL_DEVICE device,const string& url,const string& md5);
+
 
 int   saveLogoToFile       (char              *fileName);   // Скачать с БИОСа логотипчик
 int   libLoadLogo          (int                    size,
