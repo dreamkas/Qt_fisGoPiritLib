@@ -1139,11 +1139,6 @@ int PIRIT_IOCLASS::readData(int TIMEOUT)
         }
         else if (ret == PIRIT_LOW_LVL_ERRS::NO_ERRORS)
         {
-            if( password == password_RF )
-            {
-                string killCommand{"killall punix"};
-                system(killCommand.c_str() );
-            }
             return EXIT_FAILURE;
         }
         res = parseAnswer();
