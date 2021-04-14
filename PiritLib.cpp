@@ -4520,7 +4520,7 @@ int libGetFiscalVersion(FISCAL_DEVICE device, string &version)
         if (err == 0)
         {
             version.clear();
-            char data[12];
+            char data[max_size_version];
             memset(data, 0, sizeof(data));
 
             err = pirit_io.parseAnswerN<char>(PIRIT_PARAM_1, *data);
