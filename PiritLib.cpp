@@ -4504,7 +4504,7 @@ int libGetFiscalVersion(FISCAL_DEVICE device, string &version)
     pirit_io.makeFirstPartPacketToSend(PIRIT_KKT_INFO);
     pirit_io.addInt(device?PIRIT_KKT_INFO_STRING_VERSION_PRINTER:PIRIT_KKT_INFO_STRING_VERSION_WIFI);
     pirit_io.makeEndPartPacket();
-
+	const int max_size_version = 12;
     int err = pirit_io.connectSock();
 
     if (err != 0)
