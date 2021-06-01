@@ -269,7 +269,17 @@ MData libGetExErrorInfo(unsigned char numRequest)
         err = pirit_io.readData();
         if ((err == 0) && (numRequest == PIRIT_PARAM_1))
         {
-            err = pirit_io.parseAnswerN<char> ( PIRIT_PARAM_2, *mData.data);
+            int number_error = 0;
+            err = pirit_io.parseAnswerN<int> ( PIRIT_PARAM_1, number_error );
+            if(err == 0 && number_error == FB_NOT_ERROR)
+            {
+                const char data[] = "Ошибка. Повторите или обратитесь в техническую поддержку";
+                memcpy(mData.data,data,sizeof(data));
+            }
+            else
+            {
+                err = pirit_io.parseAnswerN<char> ( PIRIT_PARAM_2, *mData.data);
+            }
         }
     }
 
