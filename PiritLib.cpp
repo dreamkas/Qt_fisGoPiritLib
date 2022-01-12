@@ -4562,3 +4562,32 @@ int libUpdateFiscal(FISCAL_DEVICE device,const string& url,const string& md5)
     return err;
 }
 
+int libGetLineWidth(const FONTS font, int &width)
+{
+    pirit_io.makeFirstPartPacketToSend(PIRIT_KKT_INFO);
+    pirit_io.addInt(PIRIT_KKT_INFO_LINE_WIDTH);
+    pirit_io.addInt(font);
+    pirit_io.makeEndPartPacket();
+    int err = pirit_io.connectSock();
+
+    if (err != 0)
+    {
+        return err;
+    }
+
+    err = pirit_io.sendData();
+
+    if (err == 0)
+    {
+        err = pirit_io.readData();
+
+        if (err == 0)
+        {
+            pirit_io.parseAnswerN<int>(PIRIT_PARAM_1, width);
+        }
+    }
+
+    pirit_io.disconnectSock();
+
+    return err;
+}

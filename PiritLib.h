@@ -503,19 +503,20 @@ enum PIRIT_RECEIPT_INDEX
 //  Параметры для команды PIRIT_KKT_INFO
 enum PIRIT_KKT_INFO_PARAM
 {
-    PIRIT_KKT_INFO_KKT_PLANT_NUM          = 0x01,     //  Вернуть заводской номер ККТ
-    PIRIT_KKT_INFO_ID_FIRMWARE            = 0x02,     //  Вернуть идентификатор прошивки
-    PIRIT_KKT_INFO_INN                    = 0x03,     //	Вернуть ИНН
-    PIRIT_KKT_INFO_PLANT_NUM              = 0x04,     //  Вернуть регистрационный номер ККТ
-    PIRIT_KKT_INFO_DATE_TIME_LAST_FD      = 0x05,     //	Вернуть дату и время последней фискальной операции
-    PIRIT_KKT_INFO_DATE_TIME_REG          = 0x06,     //  Вернуть дату регистрации / перерегистрации
-    PIRIT_KKT_INFO_CASH_IN_DROWER         = 0x07,     //  Вернуть сумму наличных в денежном ящике
-    PIRIT_KKT_INFO_NEXT_DOC               = 0x08,     //  Вернуть номер следующего документа
-    PIRIT_KKT_INFO_FS_VALIDITY_DATE       = 0x0E,     //  Вернуть ресурс ключей ФН
-    PIRIT_KKT_INFO_DATE_TIME_OPEN_SHIFT   = 0x11,     //  Вернуть дату и время открытия смены
-    PIRIT_KKT_INFO_CNO_SIGNS_AGENT        = 0x17,      //  Вернуть систему налогообложения и режим работы и ФН
-    PIRIT_KKT_INFO_STRING_VERSION_PRINTER = 0x46,      //  Вернуть версию прошивки принтера в виде строки
-    PIRIT_KKT_INFO_STRING_VERSION_WIFI    = 0x47       //  Вернуть версию прошивки wifi модуля в виде строки
+    PIRIT_KKT_INFO_KKT_PLANT_NUM          = 0x01,   // Вернуть заводской номер ККТ
+    PIRIT_KKT_INFO_ID_FIRMWARE            = 0x02,   // Вернуть идентификатор прошивки
+    PIRIT_KKT_INFO_INN                    = 0x03,   // Вернуть ИНН
+    PIRIT_KKT_INFO_PLANT_NUM              = 0x04,   // Вернуть регистрационный номер ККТ
+    PIRIT_KKT_INFO_DATE_TIME_LAST_FD      = 0x05,   // Вернуть дату и время последней фискальной операции
+    PIRIT_KKT_INFO_DATE_TIME_REG          = 0x06,   // Вернуть дату регистрации / перерегистрации
+    PIRIT_KKT_INFO_CASH_IN_DROWER         = 0x07,   // Вернуть сумму наличных в денежном ящике
+    PIRIT_KKT_INFO_NEXT_DOC               = 0x08,   // Вернуть номер следующего документа
+    PIRIT_KKT_INFO_FS_VALIDITY_DATE       = 0x0E,   // Вернуть ресурс ключей ФН
+    PIRIT_KKT_INFO_DATE_TIME_OPEN_SHIFT   = 0x11,   // Вернуть дату и время открытия смены
+    PIRIT_KKT_INFO_LINE_WIDTH             = 0x12,   // Вернуть ширину строки принтера для данного шрифта
+    PIRIT_KKT_INFO_CNO_SIGNS_AGENT        = 0x17,   // Вернуть систему налогообложения и режим работы и ФН
+    PIRIT_KKT_INFO_STRING_VERSION_PRINTER = 0x46,   // Вернуть версию прошивки принтера в виде строки
+    PIRIT_KKT_INFO_STRING_VERSION_WIFI    = 0x47    // Вернуть версию прошивки wifi модуля в виде строки
 };
 
 //-------------------------------------------------
@@ -1125,6 +1126,13 @@ int   getStatusFlags       (int        *fatalStatus,
 // Запрос сведений о ККТ, getKKTInfoNum(numParam = 1)
 int   getKKTInfo(           unsigned char numRequest,
                             char              *data);
+/**
+ * @brief libGetLineWidth чтение ширины строки принтера
+ * @param font шрифт
+ * @param width ширина строки
+ * @return результат выполнения
+ */
+int libGetLineWidth(const FONTS font, int &width);
 // Запрос ????
 int   getKKTInfoNum        (unsigned char numRequest,
                             int             numParam,
