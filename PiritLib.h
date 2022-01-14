@@ -1127,6 +1127,12 @@ int   getStatusFlags       (int        *fatalStatus,
 int   getKKTInfo(           unsigned char numRequest,
                             char              *data);
 /**
+ * @brief libGetOpenShiftDate чтение даты открытия смены
+ * @param date дата открытия смены
+ * @return результат выполнения
+ */
+int libGetOpenShiftDate(std::string &date);
+/**
  * @brief libGetLineWidth чтение ширины строки принтера
  * @param font шрифт
  * @param width ширина строки

@@ -4588,6 +4588,41 @@ int libGetLineWidth(const FONTS font, int &width)
     }
 
     pirit_io.disconnectSock();
+    return err;
+}
 
+int libGetOpenShiftDate(std::string &date)
+{
+    pirit_io.makeFirstPartPacketToSend(PIRIT_KKT_INFO);
+    pirit_io.addInt(PIRIT_KKT_INFO_DATE_TIME_OPEN_SHIFT);
+    pirit_io.makeEndPartPacket();
+    int err = pirit_io.connectSock();
+
+    if (err != 0)
+    {
+        return err;
+    }
+
+    err = pirit_io.sendData();
+
+    if (err == 0)
+    {
+        err = pirit_io.readData();
+
+        if (err == 0)
+        {
+            char dateArray[6] = {0x00};
+            char timeArray[6] = {0x00};
+            err = pirit_io.parseAnswerN<char>(PIRIT_PARAM_1, *dateArray);
+            err = pirit_io.parseAnswerN<char>(PIRIT_PARAM_2, *timeArray);
+
+            if (err == 0)
+            {
+                date = std::string(dateArray) + std::string(timeArray);
+            }
+        }
+    }
+
+    pirit_io.disconnectSock();
     return err;
 }
